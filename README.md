@@ -2,7 +2,7 @@
 This is a repository containing NewGRFs that I've created for OpenTTD. To use them:
 1. Install and run [OpenTTD](https://github.com/OpenTTD/OpenTTD)
 2. Go to NewGRF Settings > Check Online Content
-3. Check the NewGRFs that you want (mine, other people's or both)
+3. Check the box next to the NewGRFs that you want (mine, other people's or both)
 4. Click Download
 5. Select the NewGRF and click Add
 6. Start a new game
