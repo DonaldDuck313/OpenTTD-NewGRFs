@@ -1,0 +1,14 @@
+# B82500
+This NewGRF represents the hybrid [B82500 locomotive](https://en.wikipedia.org/wiki/SNCF_Class_B_82500).
+
+![](https://i.stack.imgur.com/BCWo5.png)
+
+To use this NewGRF, you need to install [OpenTTD](https://github.com/OpenTTD/OpenTTD), then go to NewGRF settigns > Download content > B82500.
+
+Some characteristics:
+* Introduction date: 2004
+* Maximum speed: 160 km/h
+* Power: 2547 hp on electric tracks, 1775 hp otherwise
+* Running cost: Varies with inflation, but the running cost is halved when running on electric tracks
+
+Graphics are based on the Millennium Z1 graphics by the [OpenGFX team](https://github.com/OpenTTD/OpenGFX), with some modifications.
