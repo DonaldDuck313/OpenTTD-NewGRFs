@@ -1,0 +1,8 @@
+##grflangid 0x2e
+
+STR_GRF_NAME:Vattenverk som industri
+STR_GRF_DESCRIPTION:Denna NewGRF lägger till vattenverk som industri for det tropiska klimatet. Den förbättrar också vattentillgångarna så att de inte stänger ner.{}{}Denna NewGRF är kompatibel med FIRS. Om du använder den med FIRS återaktiverar den även vattentillgångarna och vattentornen.{}{}OBS: Om du använder FIRS så måste denna NewGRF vara efter FIRS i listan "Aktiva NewGRF-filer" för att den ska fungera som förväntat.
+
+STR_INCORRECT_CLIMATE:NewGRFen "Vattenverk som industri" ska bara användas i det tropiska klimatet.
+
+STR_WATER_TREATMENT_PLANT_NAME:Vattenverk

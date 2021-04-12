@@ -1,0 +1,8 @@
+##grflangid 0x3
+
+STR_GRF_NAME:Station d'épuration comme industrie
+STR_GRF_DESCRIPTION:Ce NewGRF ajoute des stations d'épuration comme industrie pour le climat tropical. Il améliore aussi les sources d'eau pour qu'elles ne ferment jamais.{}{}Ce NewGRF est compatible avec FIRS. Si vous l'utilisez avec FIRS, il ré-active également les sources d'eau et les châteaux d'eau.{}{}NOTE: Si vous utilisez FIRS, pour que ce NewGRF fonctionne comme prévu, il doit être après FIRS dans la liste "Modules NewGRF actifs".
+
+STR_INCORRECT_CLIMATE:Le NewGRF "Station d'épuration comme industrie" ne fonctionne que dans le climat tropical.
+
+STR_WATER_TREATMENT_PLANT_NAME:Station d'épuration
