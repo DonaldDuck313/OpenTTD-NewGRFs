@@ -1,0 +1,8 @@
+##grflangid 0x0
+
+STR_GRF_NAME:Water Treatment Plant as Industry
+STR_GRF_DESCRIPTION:This NewGRF adds a water treatment plant industry for the tropical climate. It also improves the standard water supplies so that they don't close down.{}{}This NewGRF is compatible with FIRS. If you use it with FIRS, it also re-enables the standard water supply and water tower industries.{}{}NOTE: If you use FIRS, for this NewGRF to work as expected, it must be after FIRS in the "Active NewGRF-files" list.
+
+STR_INCORRECT_CLIMATE:The NewGRF "Water Treatment Plant as Industry" is designed to be used with the tropical climate only.
+
+STR_WATER_TREATMENT_PLANT_NAME:Water Treatment Plant
