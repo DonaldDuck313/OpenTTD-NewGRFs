@@ -1,0 +1,501 @@
+grf{
+    grfid: "GL\02\01";
+    name: string(STR_GRF_NAME);
+    desc: string(STR_GRF_DESCRIPTION);
+    version: 0;
+    min_compatible_version: 0;
+}
+
+if(climate != CLIMATE_TROPICAL){
+    error(FATAL, string(STR_INCORRECT_CLIMATE));
+}
+
+//Cargo types
+cargotable{
+    WATR, GOOD, RFPR
+}
+
+item(FEAT_CARGOS, goods, 5){    //Redefine town_growth_effect for goods to TOWNGROWTH_GOODS because FIRS sets it to TOWNGROWTH_WATER which would cause towns to need goods instead of water
+    property{
+        town_growth_effect: TOWNGROWTH_GOODS;
+    }
+}
+
+spriteset(water_icon, "gfx/water.png"){
+    [0, 0, 10, 10, 0, 0]
+}
+
+item(FEAT_CARGOS, water, 50){
+    property{
+        number: 50;
+        cargo_classes: bitmask(CC_LIQUID);
+        cargo_label: "WATR";
+        type_name: TTD_STR_CARGO_PLURAL_WATER;
+        unit_name: TTD_STR_CARGO_SINGULAR_WATER;
+        units_of_cargo: TTD_STR_LITERS;
+        items_of_cargo: TTD_STR_QUANTITY_WATER;
+        type_abbreviation: TTD_STR_ABBREV_WATER;
+        sprite: NEW_CARGO_SPRITE;
+        weight: 1;
+        penalty_lowerbound: 80;
+        single_penalty_length: 200;
+        price_factor: 113;
+        station_list_colour: 10;
+        cargo_payment_list_colour: 10;
+        is_freight: 1;
+        capacity_multiplier: 1.0;
+        town_growth_effect: TOWNGROWTH_WATER;
+    }
+    graphics{
+        water_icon;
+    }
+}
+
+
+//Water supply
+switch(FEAT_INDUSTRYTILES, SELF, switch_flat_terrain, nearby_tile_slope(0, 0)){
+    SLOPE_FLAT: return CB_RESULT_LOCATION_ALLOW;
+    return CB_RESULT_LOCATION_DISALLOW;
+}
+
+switch(FEAT_INDUSTRIES, SELF, switch_in_desert, nearby_tile_terrain_type(0, 0)){
+    TILETYPE_DESERT: return CB_RESULT_LOCATION_ALLOW;
+    return CB_RESULT_LOCATION_DISALLOW_ONLY_DESERT;
+}
+
+spriteset(spriteset_water_supply, "gfx/watersupply.png"){
+    //left x, upper y, width, height, offset x, offset y
+    [0,       0,       35,    62,     -18,      -35]
+    [48,      0,       35,    62,     -18,      -35]
+    [48,      0,       35,    62,     -18,      -35]    //Duplicate this so that we can use the variable construction_state directly
+    [96,      0,       35,    62,     -18,      -35]
+    [144,     0,       51,    49,     -23,      -25]
+    [208,     0,       51,    49,     -23,      -25]
+    [208,     0,       51,    49,     -23,      -25]    //Duplicate this so that we can use the variable construction_state directly
+    [272,     0,       51,    49,     -23,      -25]
+}
+
+spritelayout water_supply_sprite_1{
+    ground{
+        sprite: 3981;
+    }
+    building{
+        sprite: spriteset_water_supply(construction_state);
+        recolour_mode: RECOLOUR_REMAP;
+        palette: PALETTE_USE_DEFAULT;
+    }
+}
+
+spritelayout water_supply_sprite_2{
+    ground{
+        sprite: 3981;
+    }
+    building{
+        sprite: spriteset_water_supply(construction_state + 4);
+        recolour_mode: RECOLOUR_REMAP;
+        palette: PALETTE_USE_DEFAULT;
+    }
+}
+
+item(FEAT_INDUSTRYTILES, water_supply_tile_1){
+    property{
+        substitute: 02;
+        special_flags: bitmask(INDTILE_FLAG_ACCEPT_ALL);
+    }
+    graphics {
+        default: water_supply_sprite_1;
+        tile_check: switch_flat_terrain;
+    }
+}
+
+item(FEAT_INDUSTRYTILES, water_supply_tile_2){
+    property{
+        substitute: 02;
+        special_flags: bitmask(INDTILE_FLAG_ACCEPT_ALL);
+    }
+    graphics {
+        default: water_supply_sprite_2;
+        tile_check: switch_flat_terrain;
+    }
+}
+
+tilelayout water_supply_layout{
+    0, 0: water_supply_tile_1;
+    0, 1: water_supply_tile_2;
+    1, 0: water_supply_tile_1;
+    1, 1: water_supply_tile_2;
+}
+
+item(FEAT_INDUSTRIES, water_supply){
+    property{
+        substitute: INDUSTRYTYPE_WATER_WELL;
+        override: INDUSTRYTYPE_WATER_WELL;
+        life_type: IND_LIFE_TYPE_EXTRACTIVE;
+        cargo_types: [
+            produce_cargo("WATR", 18)
+        ];
+        name: TTD_STR_INDUSTRY_NAME_WATER_SUPPLY;
+        prob_map_gen: 50;
+        prob_in_game: 20;
+        map_colour: 37;
+        fund_cost_multiplier: 200;
+        prospect_chance: 0.75;
+        layouts: [
+            water_supply_layout
+        ];
+    }
+    graphics{
+        location_check: switch_in_desert;
+        monthly_prod_change: CB_RESULT_IND_PROD_NO_CHANGE;
+        random_prod_change: CB_RESULT_IND_PROD_NO_CHANGE;
+    }
+}
+
+
+//Water tower
+spriteset(spriteset_water_tower, "gfx/watertower.png"){
+    //left x, upper y, width, height, offset x, offset y
+    [0,       0,       43,    70,     -20,      -42]
+    [48,      0,       43,    70,     -20,      -42]
+    [48,      0,       43,    70,     -20,      -42]    //Duplicate this so that we can use the variable construction_state directly
+    [96,      0,       43,    70,     -20,      -42]
+}
+
+spritelayout water_tower_sprite{
+    ground{
+        sprite: 3924;
+    }
+    building{
+        sprite: spriteset_water_tower(construction_state);
+        recolour_mode: RECOLOUR_REMAP;
+        palette: PALETTE_USE_DEFAULT;
+    }
+}
+
+item(FEAT_INDUSTRYTILES, water_tower_tile){
+    property{
+        substitute: 02;
+        special_flags: bitmask(INDTILE_FLAG_ACCEPT_ALL);
+    }
+    graphics{
+        default: water_tower_sprite;
+    }
+}
+
+tilelayout water_tower_layout{
+    0, 0: water_tower_tile;
+}
+
+item(FEAT_INDUSTRIES, water_tower){
+    property{
+        substitute: INDUSTRYTYPE_WATER_TOWER;
+        override: INDUSTRYTYPE_WATER_TOWER;
+        life_type: IND_LIFE_TYPE_BLACK_HOLE;
+        cargo_types: [
+            accept_cargo("WATR")
+        ];
+        name: TTD_STR_INDUSTRY_NAME_WATER_TOWER;
+        prob_map_gen: 255;
+        prob_in_game: 255;
+        map_colour: 209;
+        fund_cost_multiplier: 115;
+        spec_flags: bitmask(IND_FLAG_ONLY_IN_TOWNS);
+        layouts: [
+            water_tower_layout
+        ];
+    }
+    graphics{
+        location_check: switch_in_desert;
+        monthly_prod_change: CB_RESULT_IND_PROD_NO_CHANGE;
+        random_prod_change: CB_RESULT_IND_PROD_NO_CHANGE;
+    }
+}
+
+
+//Water treatment plant
+switch(FEAT_INDUSTRYTILES, SELF, switch_on_water, nearby_tile_water_class(0, 0)){
+    WATER_CLASS_SEA: return CB_RESULT_LOCATION_ALLOW;
+    return CB_RESULT_LOCATION_DISALLOW;
+}
+
+switch(FEAT_INDUSTRYTILES, SELF, switch_slope_NE, nearby_tile_slope(0, 0)){
+    SLOPE_NE: return switch_on_water;
+    return CB_RESULT_LOCATION_DISALLOW;
+}
+
+switch(FEAT_INDUSTRYTILES, SELF, switch_slope_NW, nearby_tile_slope(0, 0)){
+    SLOPE_NW: return switch_on_water;
+    return CB_RESULT_LOCATION_DISALLOW;
+}
+
+switch(FEAT_INDUSTRYTILES, SELF, switch_slope_SE, nearby_tile_slope(0, 0)){
+    SLOPE_SE: return switch_on_water;
+    return CB_RESULT_LOCATION_DISALLOW;
+}
+
+switch(FEAT_INDUSTRYTILES, SELF, switch_slope_SW, nearby_tile_slope(0, 0)){
+    SLOPE_SW: return switch_on_water;
+    return CB_RESULT_LOCATION_DISALLOW;
+}
+
+spriteset(spriteset_water_treatment_plant, "gfx/watertreatmentplant.png"){
+    //left x, upper y, width, height, offset x, offset y, flags
+    [0,       0,       64,    51,     -31,      -20]
+    [0,       64,      64,    51,     -31,      -20]
+    [0,       128,     64,    51,     -31,      -20]
+    [0,       192,     64,    51,     -31,      -20]
+    [70,      0,       64,    39,     -31,      -7]
+    [70,      64,      64,    39,     -31,      -7]
+    [70,      128,     64,    39,     -31,      -7]
+    [70,      192,     64,    39,     -31,      -7,       ANIM]
+    [140,     0,       64,    39,     -35,      -7]
+    [140,     64,      64,    39,     -35,      -7]
+    [140,     128,     64,    39,     -35,      -7]
+    [140,     192,     64,    39,     -35,      -7,       ANIM]
+}
+
+spritelayout water_treatment_plant_sprite_0{
+    ground{
+        sprite: 3981;
+    }
+    building{
+        sprite: spriteset_water_treatment_plant(construction_state);
+    }
+}
+
+spritelayout water_treatment_plant_sprite_1{
+    ground{
+        sprite: 3981;
+    }
+    building{
+        sprite: spriteset_water_treatment_plant(construction_state + 4);
+    }
+}
+
+spritelayout water_treatment_plant_sprite_2{
+    ground{
+        sprite: 3981;
+    }
+    building{
+        sprite: spriteset_water_treatment_plant(construction_state + 8);
+    }
+}
+
+spritelayout water_treatment_plant_sprite_NE{
+    ground{
+        sprite: 3981;
+    }
+    building{
+        sprite: spriteset_water_treatment_plant(construction_state + 4);
+    }
+}
+
+spritelayout water_treatment_plant_sprite_NW{
+    ground{
+        sprite: 3981;
+    }
+    building{
+        sprite: spriteset_water_treatment_plant(construction_state + 8);
+    }
+}
+
+spritelayout water_treatment_plant_sprite_SE{
+    ground{
+        sprite: 3981;
+    }
+    building{
+        sprite: spriteset_water_treatment_plant(construction_state + 8);
+    }
+}
+
+spritelayout water_treatment_plant_sprite_SW{
+    ground{
+        sprite: 3981;
+    }
+    building{
+        sprite: spriteset_water_treatment_plant(construction_state + 4);
+    }
+}
+
+item(FEAT_INDUSTRYTILES, water_treatment_plant_building_tile){
+    property{
+        substitute: 02;
+        special_flags: bitmask(INDTILE_FLAG_ACCEPT_ALL);
+    }
+    graphics {
+        default: water_treatment_plant_sprite_0;
+        tile_check: switch_flat_terrain;
+    }
+}
+
+item(FEAT_INDUSTRYTILES, water_treatment_plant_tile_pool_tile_1){
+    property{
+        substitute: 02;
+        special_flags: bitmask(INDTILE_FLAG_ACCEPT_ALL);
+    }
+    graphics {
+        default: water_treatment_plant_sprite_1;
+        tile_check: switch_flat_terrain;
+    }
+}
+
+item(FEAT_INDUSTRYTILES, water_treatment_plant_tile_pool_tile_2){
+    property{
+        substitute: 02;
+        special_flags: bitmask(INDTILE_FLAG_ACCEPT_ALL);
+    }
+    graphics {
+        default: water_treatment_plant_sprite_2;
+        tile_check: switch_flat_terrain;
+    }
+}
+
+item(FEAT_INDUSTRYTILES, water_treatment_plant_tile_pool_tile_by_water_NE){
+    property{
+        substitute: 02;
+        special_flags: bitmask(INDTILE_FLAG_ACCEPT_ALL);
+        land_shape_flags: bitmask(LSF_ALLOW_ON_WATER);
+    }
+    graphics {
+        default: water_treatment_plant_sprite_NE;
+        tile_check: switch_slope_NE;
+    }
+}
+
+item(FEAT_INDUSTRYTILES, water_treatment_plant_tile_pool_tile_by_water_NW){
+    property{
+        substitute: 02;
+        special_flags: bitmask(INDTILE_FLAG_ACCEPT_ALL);
+        land_shape_flags: bitmask(LSF_ALLOW_ON_WATER);
+    }
+    graphics {
+        default: water_treatment_plant_sprite_NW;
+        tile_check: switch_slope_NW;
+    }
+}
+
+item(FEAT_INDUSTRYTILES, water_treatment_plant_tile_pool_tile_by_water_SE){
+    property{
+        substitute: 02;
+        special_flags: bitmask(INDTILE_FLAG_ACCEPT_ALL);
+        land_shape_flags: bitmask(LSF_ALLOW_ON_WATER);
+    }
+    graphics {
+        default: water_treatment_plant_sprite_SE;
+        tile_check: switch_slope_SE;
+    }
+}
+
+item(FEAT_INDUSTRYTILES, water_treatment_plant_tile_pool_tile_by_water_SW){
+    property{
+        substitute: 02;
+        special_flags: bitmask(INDTILE_FLAG_ACCEPT_ALL);
+        land_shape_flags: bitmask(LSF_ALLOW_ON_WATER);
+    }
+    graphics {
+        default: water_treatment_plant_sprite_SW;
+        tile_check: switch_slope_SW;
+    }
+}
+
+tilelayout water_treatment_plant_layout_NE_1{
+    1, 1: water_treatment_plant_building_tile;
+    2, 0: water_treatment_plant_tile_pool_tile_by_water_NE;
+    1, 0: water_treatment_plant_tile_pool_tile_1;
+    0, 0: water_treatment_plant_tile_pool_tile_2;
+    0, 1: water_treatment_plant_tile_pool_tile_2;
+    0, 2: water_treatment_plant_tile_pool_tile_2;
+}
+
+tilelayout water_treatment_plant_layout_NE_2{
+    1, 1: water_treatment_plant_building_tile;
+    2, 2: water_treatment_plant_tile_pool_tile_by_water_NE;
+    1, 2: water_treatment_plant_tile_pool_tile_1;
+    0, 2: water_treatment_plant_tile_pool_tile_2;
+    0, 1: water_treatment_plant_tile_pool_tile_2;
+    0, 0: water_treatment_plant_tile_pool_tile_2;
+}
+
+tilelayout water_treatment_plant_layout_NW_1{
+    1, 1: water_treatment_plant_building_tile;
+    0, 2: water_treatment_plant_tile_pool_tile_by_water_NW;
+    0, 1: water_treatment_plant_tile_pool_tile_2;
+    0, 0: water_treatment_plant_tile_pool_tile_1;
+    1, 0: water_treatment_plant_tile_pool_tile_1;
+    2, 0: water_treatment_plant_tile_pool_tile_1;
+}
+
+tilelayout water_treatment_plant_layout_NW_2{
+    1, 1: water_treatment_plant_building_tile;
+    2, 2: water_treatment_plant_tile_pool_tile_by_water_NW;
+    2, 1: water_treatment_plant_tile_pool_tile_2;
+    2, 0: water_treatment_plant_tile_pool_tile_1;
+    1, 0: water_treatment_plant_tile_pool_tile_1;
+    0, 0: water_treatment_plant_tile_pool_tile_1;
+}
+
+tilelayout water_treatment_plant_layout_SE_1{
+    1, 1: water_treatment_plant_building_tile;
+    0, 0: water_treatment_plant_tile_pool_tile_by_water_SE;
+    0, 1: water_treatment_plant_tile_pool_tile_2;
+    0, 2: water_treatment_plant_tile_pool_tile_1;
+    1, 2: water_treatment_plant_tile_pool_tile_1;
+    2, 2: water_treatment_plant_tile_pool_tile_1;
+}
+
+tilelayout water_treatment_plant_layout_SE_2{
+    1, 1: water_treatment_plant_building_tile;
+    2, 0: water_treatment_plant_tile_pool_tile_by_water_SE;
+    2, 1: water_treatment_plant_tile_pool_tile_2;
+    2, 2: water_treatment_plant_tile_pool_tile_1;
+    1, 2: water_treatment_plant_tile_pool_tile_1;
+    0, 2: water_treatment_plant_tile_pool_tile_1;
+}
+
+tilelayout water_treatment_plant_layout_SW_1{
+    1, 1: water_treatment_plant_building_tile;
+    0, 0: water_treatment_plant_tile_pool_tile_by_water_SW;
+    1, 0: water_treatment_plant_tile_pool_tile_1;
+    2, 0: water_treatment_plant_tile_pool_tile_2;
+    2, 1: water_treatment_plant_tile_pool_tile_2;
+    2, 2: water_treatment_plant_tile_pool_tile_2;
+}
+
+tilelayout water_treatment_plant_layout_SW_2{
+    1, 1: water_treatment_plant_building_tile;
+    0, 2: water_treatment_plant_tile_pool_tile_by_water_SW;
+    1, 2: water_treatment_plant_tile_pool_tile_1;
+    2, 2: water_treatment_plant_tile_pool_tile_2;
+    2, 1: water_treatment_plant_tile_pool_tile_2;
+    2, 0: water_treatment_plant_tile_pool_tile_2;
+}
+
+item(FEAT_INDUSTRIES, water_treatment_plant){
+    property{
+        substitute: 0;
+        life_type: IND_LIFE_TYPE_BLACK_HOLE;
+        cargo_types: [
+            accept_cargo("RFPR"),    //RFPR is the FIRS abbreviation for chemicals
+            produce_cargo("WATR", 18)
+        ];
+        name: string(STR_WATER_TREATMENT_PLANT_NAME);
+        prob_map_gen: 20;
+        prob_in_game: 20;
+        fund_cost_multiplier: 250;
+        map_colour: 176;
+        layouts: [
+            water_treatment_plant_layout_NE_1,
+            water_treatment_plant_layout_NE_2,
+            water_treatment_plant_layout_NW_1,
+            water_treatment_plant_layout_NW_2,
+            water_treatment_plant_layout_SE_1,
+            water_treatment_plant_layout_SE_2,
+            water_treatment_plant_layout_SW_1,
+            water_treatment_plant_layout_SW_2
+        ];
+    }
+    graphics{
+        monthly_prod_change: CB_RESULT_IND_PROD_NO_CHANGE;
+        random_prod_change: CB_RESULT_IND_PROD_NO_CHANGE;
+    }
+}
