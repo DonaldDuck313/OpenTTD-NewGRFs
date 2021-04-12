@@ -11,4 +11,4 @@ If you use this NewGRF in combination with FIRS, for it to work as intended, it 
 
 <img src="https://i.stack.imgur.com/joTcA.png" width="40%"> <img src="https://i.stack.imgur.com/k2jBX.png" width="40%">
 
-Graphics are based on various graphics by [OpenGFX](https://github.com/OpenTTD/OpenGFX) and [FIRS](https://github.com/andythenorth/firs).
+Graphics are based on various graphics by [OpenGFX](https://github.com/OpenTTD/OpenGFX) and [FIRS](https://github.com/andythenorth/firs), both licensed under the GPL v2.
