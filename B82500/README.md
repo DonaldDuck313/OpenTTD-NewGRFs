@@ -3,8 +3,6 @@ This NewGRF adds a locomotive representing the hybrid [B82500 locomotive](https:
 
 ![](https://i.stack.imgur.com/BCWo5.png)
 
-To use this NewGRF, you need to install [OpenTTD](https://github.com/OpenTTD/OpenTTD), then go to NewGRF settigns > Download content > B82500.
-
 Some characteristics:
 * Introduction date: 2004
 * Maximum speed: 160 km/h
