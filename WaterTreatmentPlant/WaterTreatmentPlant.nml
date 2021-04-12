@@ -3,11 +3,24 @@ grf{
     name: string(STR_GRF_NAME);
     desc: string(STR_GRF_DESCRIPTION);
     version: 0;
-    min_compatible_version: 0;
+    min_compatible_version: 1;
+
+    param 0{
+        param_allow_water_tretament_plant_on_sea{
+            name: string(STR_PARAM_NAME_ALLOW_ON_SEA);
+            desc: string(STR_PARAM_DESC_ALLOW_ON_SEA);
+            type: bool;
+            def_value: 0;
+        }
+    }
 }
 
 if(climate != CLIMATE_TROPICAL){
     error(FATAL, string(STR_INCORRECT_CLIMATE));
+}
+
+if(param_allow_water_tretament_plant_on_sea == 0 && openttd_version < version_openttd(1, 11, 0)){    //Older versions of OpenTTD don't have rivers in the tropical climate, so show a warning if the user is trying to use this NewGRF with an older version of OpenTTD
+    error(FATAL, string(STR_OUTDATED_OPENTTD));
 }
 
 //Cargo types
@@ -135,7 +148,7 @@ item(FEAT_INDUSTRIES, water_supply){
             produce_cargo("WATR", 18)
         ];
         name: TTD_STR_INDUSTRY_NAME_WATER_SUPPLY;
-        prob_map_gen: 50;
+        prob_map_gen: 30;
         prob_in_game: 20;
         map_colour: 37;
         fund_cost_multiplier: 200;
@@ -235,6 +248,26 @@ switch(FEAT_INDUSTRYTILES, SELF, switch_slope_SE, nearby_tile_slope(0, 0)){
 
 switch(FEAT_INDUSTRYTILES, SELF, switch_slope_SW, nearby_tile_slope(0, 0)){
     SLOPE_SW: return switch_on_water;
+    return CB_RESULT_LOCATION_DISALLOW;
+}
+
+switch(FEAT_INDUSTRYTILES, SELF, switch_river_NE, nearby_tile_water_class(1, 0)){
+    WATER_CLASS_RIVER: return switch_flat_terrain;
+    return CB_RESULT_LOCATION_DISALLOW;
+}
+
+switch(FEAT_INDUSTRYTILES, SELF, switch_river_NW, nearby_tile_water_class(0, 1)){
+    WATER_CLASS_RIVER: return switch_flat_terrain;
+    return CB_RESULT_LOCATION_DISALLOW;
+}
+
+switch(FEAT_INDUSTRYTILES, SELF, switch_river_SE, nearby_tile_water_class(0, -1)){
+    WATER_CLASS_RIVER: return switch_flat_terrain;
+    return CB_RESULT_LOCATION_DISALLOW;
+}
+
+switch(FEAT_INDUSTRYTILES, SELF, switch_river_SW, nearby_tile_water_class(1, 0)){
+    WATER_CLASS_RIVER: return switch_flat_terrain;
     return CB_RESULT_LOCATION_DISALLOW;
 }
 
@@ -350,11 +383,11 @@ item(FEAT_INDUSTRYTILES, water_treatment_plant_tile_pool_tile_2){
     }
 }
 
-item(FEAT_INDUSTRYTILES, water_treatment_plant_tile_pool_tile_by_water_NE){
+item(FEAT_INDUSTRYTILES, water_treatment_plant_tile_pool_tile_by_sea_NE){
     property{
         substitute: 02;
         special_flags: bitmask(INDTILE_FLAG_ACCEPT_ALL);
-        land_shape_flags: bitmask(LSF_ALLOW_ON_WATER);
+        land_shape_flags: (param_allow_water_tretament_plant_on_sea == 0) ? bitmask() : bitmask(LSF_ALLOW_ON_WATER);    //The tile_check requires this to be built on water, so if we don't have LSF_ALLOW_ON_WATER, this tile can't be built at all, which is what we want if the parameter to allow building by the sea is off.
     }
     graphics {
         default: water_treatment_plant_sprite_NE;
@@ -362,11 +395,11 @@ item(FEAT_INDUSTRYTILES, water_treatment_plant_tile_pool_tile_by_water_NE){
     }
 }
 
-item(FEAT_INDUSTRYTILES, water_treatment_plant_tile_pool_tile_by_water_NW){
+item(FEAT_INDUSTRYTILES, water_treatment_plant_tile_pool_tile_by_sea_NW){
     property{
         substitute: 02;
         special_flags: bitmask(INDTILE_FLAG_ACCEPT_ALL);
-        land_shape_flags: bitmask(LSF_ALLOW_ON_WATER);
+        land_shape_flags: (param_allow_water_tretament_plant_on_sea == 0) ? bitmask() : bitmask(LSF_ALLOW_ON_WATER);
     }
     graphics {
         default: water_treatment_plant_sprite_NW;
@@ -374,11 +407,11 @@ item(FEAT_INDUSTRYTILES, water_treatment_plant_tile_pool_tile_by_water_NW){
     }
 }
 
-item(FEAT_INDUSTRYTILES, water_treatment_plant_tile_pool_tile_by_water_SE){
+item(FEAT_INDUSTRYTILES, water_treatment_plant_tile_pool_tile_by_sea_SE){
     property{
         substitute: 02;
         special_flags: bitmask(INDTILE_FLAG_ACCEPT_ALL);
-        land_shape_flags: bitmask(LSF_ALLOW_ON_WATER);
+        land_shape_flags: (param_allow_water_tretament_plant_on_sea == 0) ? bitmask() : bitmask(LSF_ALLOW_ON_WATER);
     }
     graphics {
         default: water_treatment_plant_sprite_SE;
@@ -386,11 +419,11 @@ item(FEAT_INDUSTRYTILES, water_treatment_plant_tile_pool_tile_by_water_SE){
     }
 }
 
-item(FEAT_INDUSTRYTILES, water_treatment_plant_tile_pool_tile_by_water_SW){
+item(FEAT_INDUSTRYTILES, water_treatment_plant_tile_pool_tile_by_sea_SW){
     property{
         substitute: 02;
         special_flags: bitmask(INDTILE_FLAG_ACCEPT_ALL);
-        land_shape_flags: bitmask(LSF_ALLOW_ON_WATER);
+        land_shape_flags: (param_allow_water_tretament_plant_on_sea == 0) ? bitmask() : bitmask(LSF_ALLOW_ON_WATER);
     }
     graphics {
         default: water_treatment_plant_sprite_SW;
@@ -398,9 +431,53 @@ item(FEAT_INDUSTRYTILES, water_treatment_plant_tile_pool_tile_by_water_SW){
     }
 }
 
+item(FEAT_INDUSTRYTILES, water_treatment_plant_tile_pool_tile_by_river_NE){
+    property{
+        substitute: 02;
+        special_flags: bitmask(INDTILE_FLAG_ACCEPT_ALL);
+    }
+    graphics {
+        default: water_treatment_plant_sprite_1;
+        tile_check: switch_river_NE;
+    }
+}
+
+item(FEAT_INDUSTRYTILES, water_treatment_plant_tile_pool_tile_by_river_NW){
+    property{
+        substitute: 02;
+        special_flags: bitmask(INDTILE_FLAG_ACCEPT_ALL);
+    }
+    graphics {
+        default: water_treatment_plant_sprite_2;
+        tile_check: switch_river_NW;
+    }
+}
+
+item(FEAT_INDUSTRYTILES, water_treatment_plant_tile_pool_tile_by_river_SE){
+    property{
+        substitute: 02;
+        special_flags: bitmask(INDTILE_FLAG_ACCEPT_ALL);
+    }
+    graphics {
+        default: water_treatment_plant_sprite_2;
+        tile_check: switch_river_SE;
+    }
+}
+
+item(FEAT_INDUSTRYTILES, water_treatment_plant_tile_pool_tile_by_river_SW){
+    property{
+        substitute: 02;
+        special_flags: bitmask(INDTILE_FLAG_ACCEPT_ALL);
+    }
+    graphics {
+        default: water_treatment_plant_sprite_1;
+        tile_check: switch_river_SW;
+    }
+}
+
 tilelayout water_treatment_plant_layout_NE_1{
     1, 1: water_treatment_plant_building_tile;
-    2, 0: water_treatment_plant_tile_pool_tile_by_water_NE;
+    2, 0: water_treatment_plant_tile_pool_tile_by_sea_NE;
     1, 0: water_treatment_plant_tile_pool_tile_1;
     0, 0: water_treatment_plant_tile_pool_tile_2;
     0, 1: water_treatment_plant_tile_pool_tile_2;
@@ -409,7 +486,25 @@ tilelayout water_treatment_plant_layout_NE_1{
 
 tilelayout water_treatment_plant_layout_NE_2{
     1, 1: water_treatment_plant_building_tile;
-    2, 2: water_treatment_plant_tile_pool_tile_by_water_NE;
+    2, 2: water_treatment_plant_tile_pool_tile_by_sea_NE;
+    1, 2: water_treatment_plant_tile_pool_tile_1;
+    0, 2: water_treatment_plant_tile_pool_tile_2;
+    0, 1: water_treatment_plant_tile_pool_tile_2;
+    0, 0: water_treatment_plant_tile_pool_tile_2;
+}
+
+tilelayout water_treatment_plant_layout_NE_3{
+    1, 1: water_treatment_plant_building_tile;
+    2, 0: water_treatment_plant_tile_pool_tile_by_river_NE;
+    1, 0: water_treatment_plant_tile_pool_tile_1;
+    0, 0: water_treatment_plant_tile_pool_tile_2;
+    0, 1: water_treatment_plant_tile_pool_tile_2;
+    0, 2: water_treatment_plant_tile_pool_tile_2;
+}
+
+tilelayout water_treatment_plant_layout_NE_4{
+    1, 1: water_treatment_plant_building_tile;
+    2, 2: water_treatment_plant_tile_pool_tile_by_river_NE;
     1, 2: water_treatment_plant_tile_pool_tile_1;
     0, 2: water_treatment_plant_tile_pool_tile_2;
     0, 1: water_treatment_plant_tile_pool_tile_2;
@@ -418,7 +513,7 @@ tilelayout water_treatment_plant_layout_NE_2{
 
 tilelayout water_treatment_plant_layout_NW_1{
     1, 1: water_treatment_plant_building_tile;
-    0, 2: water_treatment_plant_tile_pool_tile_by_water_NW;
+    0, 2: water_treatment_plant_tile_pool_tile_by_sea_NW;
     0, 1: water_treatment_plant_tile_pool_tile_2;
     0, 0: water_treatment_plant_tile_pool_tile_1;
     1, 0: water_treatment_plant_tile_pool_tile_1;
@@ -427,7 +522,25 @@ tilelayout water_treatment_plant_layout_NW_1{
 
 tilelayout water_treatment_plant_layout_NW_2{
     1, 1: water_treatment_plant_building_tile;
-    2, 2: water_treatment_plant_tile_pool_tile_by_water_NW;
+    2, 2: water_treatment_plant_tile_pool_tile_by_sea_NW;
+    2, 1: water_treatment_plant_tile_pool_tile_2;
+    2, 0: water_treatment_plant_tile_pool_tile_1;
+    1, 0: water_treatment_plant_tile_pool_tile_1;
+    0, 0: water_treatment_plant_tile_pool_tile_1;
+}
+
+tilelayout water_treatment_plant_layout_NW_3{
+    1, 1: water_treatment_plant_building_tile;
+    0, 2: water_treatment_plant_tile_pool_tile_by_river_NW;
+    0, 1: water_treatment_plant_tile_pool_tile_2;
+    0, 0: water_treatment_plant_tile_pool_tile_1;
+    1, 0: water_treatment_plant_tile_pool_tile_1;
+    2, 0: water_treatment_plant_tile_pool_tile_1;
+}
+
+tilelayout water_treatment_plant_layout_NW_4{
+    1, 1: water_treatment_plant_building_tile;
+    2, 2: water_treatment_plant_tile_pool_tile_by_river_NW;
     2, 1: water_treatment_plant_tile_pool_tile_2;
     2, 0: water_treatment_plant_tile_pool_tile_1;
     1, 0: water_treatment_plant_tile_pool_tile_1;
@@ -436,7 +549,7 @@ tilelayout water_treatment_plant_layout_NW_2{
 
 tilelayout water_treatment_plant_layout_SE_1{
     1, 1: water_treatment_plant_building_tile;
-    0, 0: water_treatment_plant_tile_pool_tile_by_water_SE;
+    0, 0: water_treatment_plant_tile_pool_tile_by_sea_SE;
     0, 1: water_treatment_plant_tile_pool_tile_2;
     0, 2: water_treatment_plant_tile_pool_tile_1;
     1, 2: water_treatment_plant_tile_pool_tile_1;
@@ -445,7 +558,25 @@ tilelayout water_treatment_plant_layout_SE_1{
 
 tilelayout water_treatment_plant_layout_SE_2{
     1, 1: water_treatment_plant_building_tile;
-    2, 0: water_treatment_plant_tile_pool_tile_by_water_SE;
+    2, 0: water_treatment_plant_tile_pool_tile_by_sea_SE;
+    2, 1: water_treatment_plant_tile_pool_tile_2;
+    2, 2: water_treatment_plant_tile_pool_tile_1;
+    1, 2: water_treatment_plant_tile_pool_tile_1;
+    0, 2: water_treatment_plant_tile_pool_tile_1;
+}
+
+tilelayout water_treatment_plant_layout_SE_3{
+    1, 1: water_treatment_plant_building_tile;
+    0, 0: water_treatment_plant_tile_pool_tile_by_river_SE;
+    0, 1: water_treatment_plant_tile_pool_tile_2;
+    0, 2: water_treatment_plant_tile_pool_tile_1;
+    1, 2: water_treatment_plant_tile_pool_tile_1;
+    2, 2: water_treatment_plant_tile_pool_tile_1;
+}
+
+tilelayout water_treatment_plant_layout_SE_4{
+    1, 1: water_treatment_plant_building_tile;
+    2, 0: water_treatment_plant_tile_pool_tile_by_river_SE;
     2, 1: water_treatment_plant_tile_pool_tile_2;
     2, 2: water_treatment_plant_tile_pool_tile_1;
     1, 2: water_treatment_plant_tile_pool_tile_1;
@@ -454,7 +585,7 @@ tilelayout water_treatment_plant_layout_SE_2{
 
 tilelayout water_treatment_plant_layout_SW_1{
     1, 1: water_treatment_plant_building_tile;
-    0, 0: water_treatment_plant_tile_pool_tile_by_water_SW;
+    0, 0: water_treatment_plant_tile_pool_tile_by_sea_SW;
     1, 0: water_treatment_plant_tile_pool_tile_1;
     2, 0: water_treatment_plant_tile_pool_tile_2;
     2, 1: water_treatment_plant_tile_pool_tile_2;
@@ -463,7 +594,25 @@ tilelayout water_treatment_plant_layout_SW_1{
 
 tilelayout water_treatment_plant_layout_SW_2{
     1, 1: water_treatment_plant_building_tile;
-    0, 2: water_treatment_plant_tile_pool_tile_by_water_SW;
+    0, 2: water_treatment_plant_tile_pool_tile_by_sea_SW;
+    1, 2: water_treatment_plant_tile_pool_tile_1;
+    2, 2: water_treatment_plant_tile_pool_tile_2;
+    2, 1: water_treatment_plant_tile_pool_tile_2;
+    2, 0: water_treatment_plant_tile_pool_tile_2;
+}
+
+tilelayout water_treatment_plant_layout_SW_3{
+    1, 1: water_treatment_plant_building_tile;
+    0, 0: water_treatment_plant_tile_pool_tile_by_river_SW;
+    1, 0: water_treatment_plant_tile_pool_tile_1;
+    2, 0: water_treatment_plant_tile_pool_tile_2;
+    2, 1: water_treatment_plant_tile_pool_tile_2;
+    2, 2: water_treatment_plant_tile_pool_tile_2;
+}
+
+tilelayout water_treatment_plant_layout_SW_4{
+    1, 1: water_treatment_plant_building_tile;
+    0, 2: water_treatment_plant_tile_pool_tile_by_river_SW;
     1, 2: water_treatment_plant_tile_pool_tile_1;
     2, 2: water_treatment_plant_tile_pool_tile_2;
     2, 1: water_treatment_plant_tile_pool_tile_2;
@@ -479,19 +628,27 @@ item(FEAT_INDUSTRIES, water_treatment_plant){
             produce_cargo("WATR", 18)
         ];
         name: string(STR_WATER_TREATMENT_PLANT_NAME);
-        prob_map_gen: 20;
+        prob_map_gen: (param_allow_water_tretament_plant_on_sea == 0) ? 50 : 20;    //If we can't build water treatment plants by the sea, make them more likely to be built to compensate for the fact that it's harder to find places to build them
         prob_in_game: 20;
         fund_cost_multiplier: 250;
         map_colour: 176;
         layouts: [
             water_treatment_plant_layout_NE_1,
             water_treatment_plant_layout_NE_2,
+            water_treatment_plant_layout_NE_3,
+            water_treatment_plant_layout_NE_4,
             water_treatment_plant_layout_NW_1,
             water_treatment_plant_layout_NW_2,
+            water_treatment_plant_layout_NW_3,
+            water_treatment_plant_layout_NW_4,
             water_treatment_plant_layout_SE_1,
             water_treatment_plant_layout_SE_2,
+            water_treatment_plant_layout_SE_3,
+            water_treatment_plant_layout_SE_4,
             water_treatment_plant_layout_SW_1,
-            water_treatment_plant_layout_SW_2
+            water_treatment_plant_layout_SW_2,
+            water_treatment_plant_layout_SW_3,
+            water_treatment_plant_layout_SW_4
         ];
     }
     graphics{
