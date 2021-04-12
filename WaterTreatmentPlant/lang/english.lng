@@ -4,5 +4,9 @@ STR_GRF_NAME:Water Treatment Plant as Industry
 STR_GRF_DESCRIPTION:This NewGRF adds a water treatment plant industry for the tropical climate. It also improves the standard water supplies so that they don't close down.{}{}This NewGRF is compatible with FIRS. If you use it with FIRS, it also re-enables the standard water supply and water tower industries.{}{}NOTE: If you use FIRS, for this NewGRF to work as expected, it must be after FIRS in the "Active NewGRF-files" list.
 
 STR_INCORRECT_CLIMATE:The NewGRF "Water Treatment Plant as Industry" is designed to be used with the tropical climate only.
+STR_OUTDATED_OPENTTD:The NewGRF "Water Treatment Plant as Industry" works best with OpenTTD 1.11.0 or later. Please go to https://www.openttd.org/ and download the latest version.{}{}If you really want to use this version of OpenTTD, you must turn on the parameter "Allow water treatment plants to be built by the sea" to use this NewGRF.
 
 STR_WATER_TREATMENT_PLANT_NAME:Water Treatment Plant
+
+STR_PARAM_NAME_ALLOW_ON_SEA:Allow water treatment plants to be built by the sea
+STR_PARAM_DESC_ALLOW_ON_SEA:If this setting is activated, water treatment plants can be built both next to the sea and next to rivers. Otherwise, they can only be built next to rivers.

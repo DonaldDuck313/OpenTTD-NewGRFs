@@ -4,5 +4,9 @@ STR_GRF_NAME:Vattenverk som industri
 STR_GRF_DESCRIPTION:Denna NewGRF lägger till vattenverk som industri for det tropiska klimatet. Den förbättrar också vattentillgångarna så att de inte stänger ner.{}{}Denna NewGRF är kompatibel med FIRS. Om du använder den med FIRS återaktiverar den även vattentillgångarna och vattentornen.{}{}OBS: Om du använder FIRS så måste denna NewGRF vara efter FIRS i listan "Aktiva NewGRF-filer" för att den ska fungera som förväntat.
 
 STR_INCORRECT_CLIMATE:NewGRFen "Vattenverk som industri" ska bara användas i det tropiska klimatet.
+STR_OUTDATED_OPENTTD:NewGRFen "Vattenverk som industri" fungerar bäst med OpenTTD 1.11.0 eller senare. Gå till https://www.openttd.org/ och ladda ner den senaste versionen.{}{}Om du verkligen vill använda den här versionen av OpenTTD måste du aktivera parametern "Tillåt vattenverk att byggas vid havet" för att använda den här NewGRFen.
 
 STR_WATER_TREATMENT_PLANT_NAME:Vattenverk
+
+STR_PARAM_NAME_ALLOW_ON_SEA:Tillåt vattenverk att byggas vid havet
+STR_PARAM_DESC_ALLOW_ON_SEA:Om den här inställningen är aktiverad så kan vattenverk byggas både vid havet och vid floder. Annars kan de bara byggas vid floder.

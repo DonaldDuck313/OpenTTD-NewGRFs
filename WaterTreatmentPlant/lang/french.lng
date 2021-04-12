@@ -4,5 +4,9 @@ STR_GRF_NAME:Station d'épuration comme industrie
 STR_GRF_DESCRIPTION:Ce NewGRF ajoute des stations d'épuration comme industrie pour le climat tropical. Il améliore aussi les sources d'eau pour qu'elles ne ferment jamais.{}{}Ce NewGRF est compatible avec FIRS. Si vous l'utilisez avec FIRS, il ré-active également les sources d'eau et les châteaux d'eau.{}{}NOTE: Si vous utilisez FIRS, pour que ce NewGRF fonctionne comme prévu, il doit être après FIRS dans la liste "Modules NewGRF actifs".
 
 STR_INCORRECT_CLIMATE:Le NewGRF "Station d'épuration comme industrie" ne fonctionne que dans le climat tropical.
+STR_OUTDATED_OPENTTD:Le NewGRF "Station d'épuration comme industrie" fonctionne mieux avec OpenTTD version 1.11.0 ou ultérieure. Veuillez télécharger la version la plus récente sur https://www.openttd.org/.{}{}Si vous voulez vraiment utiliser cette version d'OpenTTD, vous devez activer le paramètre "Autoriser les stations d'épuration à être contruites à côté de la mer" pour utiliser ce NewGRF.
 
 STR_WATER_TREATMENT_PLANT_NAME:Station d'épuration
+
+STR_PARAM_NAME_ALLOW_ON_SEA:Autoriser les stations d'épuration à être contruites à côté de la mer
+STR_PARAM_DESC_ALLOW_ON_SEA:Si ce paramètre est activé, les stations d'épuration peuvent être contruites à côté de la mer ou d'une rivière. Sinon, les stations d'épuration ne peuvent être construites qu'à côté des rivières.
