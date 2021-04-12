@@ -5,7 +5,7 @@ This NewGRF adds water treatment plants as industries in the tropical climate. W
 
 This NewGRF also improves the standard water supply so that it never closes.
 
-This NewGRF is compatible with FIRS. If you use it with FIRS, it will also re-enable the standard water supply and water tower industries, though the water supplies will never close using this NewGRF.
+This NewGRF is compatible with FIRS. If you use it with FIRS, it will also re-enable the standard water supply and water tower industries, though the water supplies will never close using this NewGRF. If you use it with the Original Vehicle Cargo Set (to make the original vehicles compatible with FIRS), you will also be able to refit the vehicles to transport water.
 
 If you use this NewGRF in combination with FIRS, for it to work as intended, it needs to be *after* FIRS in the "Active NewGRF-files" list.
 
