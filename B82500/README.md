@@ -1,5 +1,5 @@
 # B82500
-This NewGRF represents the hybrid [B82500 locomotive](https://en.wikipedia.org/wiki/SNCF_Class_B_82500).
+This NewGRF adds a locomotive representing the hybrid [B82500 locomotive](https://en.wikipedia.org/wiki/SNCF_Class_B_82500).
 
 ![](https://i.stack.imgur.com/BCWo5.png)
 
