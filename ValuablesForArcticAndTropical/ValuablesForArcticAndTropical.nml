@@ -1,0 +1,131 @@
+grf{
+    grfid: "GL\03\01";
+    name: string(STR_GRF_NAME);
+    desc: string(STR_GRF_DESCRIPTION);
+    version: 0;
+    min_compatible_version: 0;
+}
+
+
+//Add valuables as cargo type
+cargotable{
+    VALU, GOLD, DIAM
+}
+
+spriteset(valuables_icon, "gfx/valuables.png"){
+    [0, 0, 10, 10, 0, 0]
+}
+
+item(FEAT_CARGOS, valuables, 51){
+    property{
+        number: 51;
+        cargo_classes: bitmask(CC_ARMOURED);
+        cargo_label: "VALU";
+        type_name: TTD_STR_CARGO_PLURAL_VALUABLES;
+        unit_name: TTD_STR_CARGO_SINGULAR_VALUABLES;
+        units_of_cargo: TTD_STR_BAGS;
+        items_of_cargo: TTD_STR_QUANTITY_VALUABLES;
+        type_abbreviation: TTD_STR_ABBREV_VALUABLES;
+        sprite: NEW_CARGO_SPRITE;
+        weight: 1.0/9.0;
+        penalty_lowerbound: 32;
+        single_penalty_length: 200;
+        price_factor: 181;
+        station_list_colour: 148;
+        cargo_payment_list_colour: 148;
+        is_freight: 1;
+        capacity_multiplier: 1.0;
+        town_growth_effect: TOWNGROWTH_MAIL;
+    }
+    graphics{
+        valuables_icon;
+    }
+}
+
+
+//Redefine banks
+switch(FEAT_INDUSTRYTILES, SELF, switch_flat_terrain, nearby_tile_slope(0, 0)){
+    SLOPE_FLAT: return CB_RESULT_LOCATION_ALLOW;
+    return CB_RESULT_LOCATION_DISALLOW;
+}
+
+spriteset(spriteset_bank, "gfx/bank.png"){
+    //left x, upper y, width, height, offset x, offset y
+    [0,       0,       12,    44,     3,        -15]
+    [32,      0,       53,    59,     -18,      -35]
+    [0,       64,      58,    44,     -27,      -16]
+    [64,      64,      58,    47,     -26,      -18]
+    [0,       128,     64,    64,     -31,      -32]
+    [70,      128,     64,    64,     -31,      -32]
+}
+
+spritelayout bank_sprite_1{
+    ground{
+        sprite: 3981;
+    }
+    building{
+        sprite: spriteset_bank((construction_state < 3) ? 4 : ((climate == CLIMATE_TEMPERATE) ? 2 : 0));
+    }
+}
+
+spritelayout bank_sprite_2{
+    ground{
+        sprite: 3981;
+    }
+    building{
+        sprite: spriteset_bank((construction_state < 3) ? 5 : ((climate == CLIMATE_TEMPERATE) ? 3 : 1));
+    }
+}
+
+item(FEAT_INDUSTRYTILES, bank_tile_1){
+    property{
+        substitute: 02;
+        special_flags: bitmask(INDTILE_FLAG_ACCEPT_ALL);
+    }
+    graphics {
+        default: bank_sprite_1;
+        tile_check: switch_flat_terrain;
+    }
+}
+
+item(FEAT_INDUSTRYTILES, bank_tile_2){
+    property{
+        substitute: 02;
+        special_flags: bitmask(INDTILE_FLAG_ACCEPT_ALL);
+    }
+    graphics {
+        default: bank_sprite_2;
+        tile_check: switch_flat_terrain;
+    }
+}
+
+tilelayout bank_layout{
+    0, 0: bank_tile_1;
+    1, 0: bank_tile_2;
+}
+
+item(FEAT_INDUSTRIES, bank){
+    property{
+        substitute: (climate == CLIMATE_TEMPERATE) ? INDUSTRYTYPE_TEMPERATE_BANK : INDUSTRYTYPE_TROPICAL_ARCTIC_BANK;
+        override: (climate == CLIMATE_TEMPERATE) ? INDUSTRYTYPE_TEMPERATE_BANK : INDUSTRYTYPE_TROPICAL_ARCTIC_BANK;
+        life_type: IND_LIFE_TYPE_BLACK_HOLE;
+        cargo_types: [
+            accept_cargo("VALU"),
+            accept_cargo("GOLD"),
+            accept_cargo("DIAM"),
+            produce_cargo("VALU", 10)
+        ];
+        name: TTD_STR_INDUSTRY_NAME_BANK;
+        prob_map_gen: 5;
+        prob_in_game: 20;
+        fund_cost_multiplier: 255;
+        map_colour: 14;
+        layouts: [
+            bank_layout
+        ];
+    }
+    graphics{
+        monthly_prod_change: CB_RESULT_IND_PROD_NO_CHANGE;
+        random_prod_change: CB_RESULT_IND_PROD_NO_CHANGE;
+    }
+}
