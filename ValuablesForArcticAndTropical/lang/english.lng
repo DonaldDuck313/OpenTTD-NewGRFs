@@ -1,0 +1,4 @@
+##grflangid 0x0
+
+STR_GRF_NAME:Valuables for Arctic and Tropical Climates
+STR_GRF_DESCRIPTION:This NewGRF modifies the arctic and tropical banks so that they produce and accept valuables, in addition to accepting gold or diamonds. It can also be used in combination with FIRS in any climate to re-enable banks.{}{}NOTE: You must have the NewGRF "ECS & FIRS vehicle set" or something similar in order to have vehicles that can transport valuables in arctic and tropical climates.
