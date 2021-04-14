@@ -2,8 +2,8 @@ grf{
     grfid: "GL\02\01";
     name: string(STR_GRF_NAME);
     desc: string(STR_GRF_DESCRIPTION);
-    version: 0;
-    min_compatible_version: 1;
+    version: 2;
+    min_compatible_version: 0;
 
     param 0{
         param_allow_water_tretament_plant_on_sea{
@@ -76,86 +76,16 @@ switch(FEAT_INDUSTRIES, SELF, switch_in_desert, nearby_tile_terrain_type(0, 0)){
     return CB_RESULT_LOCATION_DISALLOW_ONLY_DESERT;
 }
 
-spriteset(spriteset_water_supply, "gfx/watersupply.png"){
-    //left x, upper y, width, height, offset x, offset y
-    [0,       0,       35,    62,     -18,      -35]
-    [48,      0,       35,    62,     -18,      -35]
-    [48,      0,       35,    62,     -18,      -35]    //Duplicate this so that we can use the variable construction_state directly
-    [96,      0,       35,    62,     -18,      -35]
-    [144,     0,       51,    49,     -23,      -25]
-    [208,     0,       51,    49,     -23,      -25]
-    [208,     0,       51,    49,     -23,      -25]    //Duplicate this so that we can use the variable construction_state directly
-    [272,     0,       51,    49,     -23,      -25]
-}
-
-spritelayout water_supply_sprite_1{
-    ground{
-        sprite: 3981;
-    }
-    building{
-        sprite: spriteset_water_supply(construction_state);
-        recolour_mode: RECOLOUR_REMAP;
-        palette: PALETTE_USE_DEFAULT;
-    }
-}
-
-spritelayout water_supply_sprite_2{
-    ground{
-        sprite: 3981;
-    }
-    building{
-        sprite: spriteset_water_supply(construction_state + 4);
-        recolour_mode: RECOLOUR_REMAP;
-        palette: PALETTE_USE_DEFAULT;
-    }
-}
-
-item(FEAT_INDUSTRYTILES, water_supply_tile_1){
-    property{
-        substitute: 02;
-        special_flags: bitmask(INDTILE_FLAG_ACCEPT_ALL);
-    }
-    graphics {
-        default: water_supply_sprite_1;
-        tile_check: switch_flat_terrain;
-    }
-}
-
-item(FEAT_INDUSTRYTILES, water_supply_tile_2){
-    property{
-        substitute: 02;
-        special_flags: bitmask(INDTILE_FLAG_ACCEPT_ALL);
-    }
-    graphics {
-        default: water_supply_sprite_2;
-        tile_check: switch_flat_terrain;
-    }
-}
-
-tilelayout water_supply_layout{
-    0, 0: water_supply_tile_1;
-    0, 1: water_supply_tile_2;
-    1, 0: water_supply_tile_1;
-    1, 1: water_supply_tile_2;
-}
-
-item(FEAT_INDUSTRIES, water_supply){
+item(FEAT_INDUSTRIES, water_supply){    //No need to define the graphics, the override property gives it the standard graphics for water supplies by default
     property{
         substitute: INDUSTRYTYPE_WATER_WELL;
         override: INDUSTRYTYPE_WATER_WELL;
-        life_type: IND_LIFE_TYPE_EXTRACTIVE;
         cargo_types: [
             produce_cargo("WATR", 18)
         ];
         name: TTD_STR_INDUSTRY_NAME_WATER_SUPPLY;
         prob_map_gen: 30;
         prob_in_game: 20;
-        map_colour: 37;
-        fund_cost_multiplier: 200;
-        prospect_chance: 0.75;
-        layouts: [
-            water_supply_layout
-        ];
     }
     graphics{
         location_check: switch_in_desert;
@@ -166,39 +96,6 @@ item(FEAT_INDUSTRIES, water_supply){
 
 
 //Water tower
-spriteset(spriteset_water_tower, "gfx/watertower.png"){
-    //left x, upper y, width, height, offset x, offset y
-    [0,       0,       43,    70,     -20,      -42]
-    [48,      0,       43,    70,     -20,      -42]
-    [48,      0,       43,    70,     -20,      -42]    //Duplicate this so that we can use the variable construction_state directly
-    [96,      0,       43,    70,     -20,      -42]
-}
-
-spritelayout water_tower_sprite{
-    ground{
-        sprite: 3924;
-    }
-    building{
-        sprite: spriteset_water_tower(construction_state);
-        recolour_mode: RECOLOUR_REMAP;
-        palette: PALETTE_USE_DEFAULT;
-    }
-}
-
-item(FEAT_INDUSTRYTILES, water_tower_tile){
-    property{
-        substitute: 02;
-        special_flags: bitmask(INDTILE_FLAG_ACCEPT_ALL);
-    }
-    graphics{
-        default: water_tower_sprite;
-    }
-}
-
-tilelayout water_tower_layout{
-    0, 0: water_tower_tile;
-}
-
 item(FEAT_INDUSTRIES, water_tower){
     property{
         substitute: INDUSTRYTYPE_WATER_TOWER;
@@ -210,17 +107,9 @@ item(FEAT_INDUSTRIES, water_tower){
         name: TTD_STR_INDUSTRY_NAME_WATER_TOWER;
         prob_map_gen: 255;
         prob_in_game: 255;
-        map_colour: 209;
-        fund_cost_multiplier: 115;
-        spec_flags: bitmask(IND_FLAG_ONLY_IN_TOWNS);
-        layouts: [
-            water_tower_layout
-        ];
     }
     graphics{
         location_check: switch_in_desert;
-        monthly_prod_change: CB_RESULT_IND_PROD_NO_CHANGE;
-        random_prod_change: CB_RESULT_IND_PROD_NO_CHANGE;
     }
 }
 
