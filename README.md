@@ -30,6 +30,6 @@ List of my NewGRFs:
     <img src="https://i.stack.imgur.com/Iw6i8.png" height="225">
 
 List of my game scripts:
-* [https://github.com/DonaldDuck313/OpenTTD-NewGRFs/tree/main/LocalAuthoritiesAndTrees](https://github.com/DonaldDuck313/OpenTTD-NewGRFs/tree/main/LocalAuthoritiesAndTrees), does so that the local authorities don't get as mad at you for cutting down trees.
+* [Local Authorities and Trees](https://github.com/DonaldDuck313/OpenTTD-NewGRFs/tree/main/LocalAuthoritiesAndTrees), does so that the local authorities don't get as mad at you for cutting down trees.
 
     <img src="https://i.stack.imgur.com/T7PBN.png" height="200">
