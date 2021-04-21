@@ -1,0 +1,20 @@
+##grflangid 0x2e
+
+STR_GRF_NAME:Articulated Road Vehicle Set
+STR_GRF_DESCRIPTION:Den här NewGRFen innhåller artikulerade bussar och lastbilar med samma stil som de originalfordonen. De här fordonen är kan anpassas så att de är kompatibla med FIRS och liknande NewGRFer.
+
+STR_BUS_NAME:Foster MkIII Ledbuss
+STR_MINERAL_NAME:DW Mineral-släplastbil
+STR_MAIL_NAME:Perry Postbil med släp
+STR_TANKER_NAME:Perry Släptanker
+STR_LIVESTOCK_NAME:Foster Boskapsbil med släp
+STR_GOODS_NAME:Goss Gods-släplastbil
+STR_GRAIN_NAME:Goss Spannmålslastare med släp
+STR_WOOD_NAME:Moreland Timmerlastare med släp
+STR_ORE_NAME:Chippy Malm-släplastbil
+STR_BOLSTER_NAME:Kelling Bolster-släplastbil
+STR_ARMORED_NAME:Foster Bepansrad släplastbil
+STR_FOOD_NAME:Chippy Matbil med släp
+STR_PAPER_NAME:MPS Papperslastare med släp
+STR_WATER_NAME:MPS Vattentanker med släp
+STR_FRUIT_NAME:Kelling Fruktlastare med släp

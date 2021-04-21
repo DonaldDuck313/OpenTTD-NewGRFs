@@ -1,0 +1,20 @@
+##grflangid 0x3
+
+STR_GRF_NAME:Articulated Road Vehicle Set
+STR_GRF_DESCRIPTION:Ce NewGRF ajoute des bus et camions articulés avec le même style que les véhicules originaux. Ces véhicules peuvent être réaménagés pour être compatibles avec FIRS ou des NewGRFs similaires.
+
+STR_BUS_NAME:Bus articulé Foster MkIII
+STR_MINERAL_NAME:Camion de minéraux à remorque DW
+STR_MAIL_NAME:Fourgon postal à remorque Perry
+STR_TANKER_NAME:Camion-citerne à remorque Perry
+STR_LIVESTOCK_NAME:Camion à bétail à remorque Foster
+STR_GOODS_NAME:Camion de biens à remorque Goss
+STR_GRAIN_NAME:Camion à céréales à remorque Goss
+STR_WOOD_NAME:Camion à bois à remorque Moreland
+STR_ORE_NAME:Camion de minerais à remorque Chippy
+STR_BOLSTER_NAME:Camion de traversin à remorque Kelling
+STR_ARMORED_NAME:Fourgon blindé à remorque Foster
+STR_FOOD_NAME:Camion à nourriture à remorque Chippy
+STR_PAPER_NAME:Camion à papier à remorque MPS
+STR_WATER_NAME:Camion-citerne d'eau à remorque MPS
+STR_FRUIT_NAME:Camion à fruits à remorque Kelling
