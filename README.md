@@ -28,6 +28,8 @@ List of my NewGRFs:
 * [Valuables for Arctic and Tropical Climates](https://github.com/DonaldDuck313/OpenTTD-NewGRFs/tree/main/ValuablesForArcticAndTropical), modifies the arctic and tropical banks so that they accept and produce valuables in addition to accepting gold or diamonds.
 
     <img src="https://i.stack.imgur.com/Iw6i8.png" height="225">
+    
+* [Articulated Road Vehicles Set](https://github.com/DonaldDuck313/OpenTTD-NewGRFs/tree/main/ArticulatedRoadVehicles), contains articulated counterparts to the latest original road vehicles.
 
 List of my game scripts:
 * [Local Authorities and Trees](https://github.com/DonaldDuck313/OpenTTD-NewGRFs/tree/main/LocalAuthoritiesAndTrees), does so that the local authorities don't get as mad at you for cutting down trees.
