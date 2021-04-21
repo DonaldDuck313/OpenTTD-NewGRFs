@@ -1,0 +1,20 @@
+##grflangid 0x0
+
+STR_GRF_NAME:Articulated Road Vehicle Set
+STR_GRF_DESCRIPTION:This NewGRF adds articulated buses and trucks with the same style as the original vehicles. These vehicles can be refitted to be compatible with FIRS or similar industry sets.
+
+STR_BUS_NAME:Foster MkIII Articulated Bus
+STR_MINERAL_NAME:DW Mineral Trailer Truck
+STR_MAIL_NAME:Perry Mail Trailer Truck
+STR_TANKER_NAME:Perry Trailer Tanker
+STR_LIVESTOCK_NAME:Foster Livestock Trailer Van
+STR_GOODS_NAME:Goss Goods Trailer Truck
+STR_GRAIN_NAME:Goss Grain Trailer Truck
+STR_WOOD_NAME:Moreland Wood Trailer Truck
+STR_ORE_NAME:Chippy Ore Trailer Truck
+STR_BOLSTER_NAME:Kelling Bolster Trailer Truck
+STR_ARMORED_NAME:Foster Armored Trailer Truck
+STR_FOOD_NAME:Chippy Food Trailer Van
+STR_PAPER_NAME:MPS Paper Trailer Truck
+STR_WATER_NAME:MPS Trailer Water Tanker
+STR_FRUIT_NAME:Kelling Fruit Trailer Truck
