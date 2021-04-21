@@ -1,7 +1,7 @@
 ##grflangid 0x0
 
 STR_GRF_NAME:Articulated Road Vehicle Set
-STR_GRF_DESCRIPTION:This NewGRF adds articulated buses and trucks with the same style as the original vehicles. These vehicles can be refitted to be compatible with FIRS or similar industry sets.
+STR_GRF_DESCRIPTION:This NewGRF adds articulated buses and trucks with the same style as the original vehicles. These vehicles can be refitted to transport most cargos from FIRS and other industry sets.
 
 STR_BUS_NAME:Foster MkIII Articulated Bus
 STR_MINERAL_NAME:DW Mineral Trailer Truck

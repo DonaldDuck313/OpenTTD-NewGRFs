@@ -1,7 +1,7 @@
 ##grflangid 0x2e
 
 STR_GRF_NAME:Articulated Road Vehicle Set
-STR_GRF_DESCRIPTION:Den här NewGRFen innhåller artikulerade bussar och lastbilar med samma stil som de originalfordonen. De här fordonen är kan anpassas så att de är kompatibla med FIRS och liknande NewGRFer.
+STR_GRF_DESCRIPTION:Den här NewGRFen innhåller artikulerade bussar och lastbilar med samma stil som de originalfordonen. De här fordonen kan anpassas för att transportera de flesta lasttyper från FIRS och liknande NewGRFer.
 
 STR_BUS_NAME:Foster MkIII Ledbuss
 STR_MINERAL_NAME:DW Mineral-släplastbil

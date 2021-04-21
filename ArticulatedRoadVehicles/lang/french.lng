@@ -1,7 +1,7 @@
 ##grflangid 0x3
 
 STR_GRF_NAME:Articulated Road Vehicle Set
-STR_GRF_DESCRIPTION:Ce NewGRF ajoute des bus et camions articulés avec le même style que les véhicules originaux. Ces véhicules peuvent être réaménagés pour être compatibles avec FIRS ou des NewGRFs similaires.
+STR_GRF_DESCRIPTION:Ce NewGRF ajoute des bus et camions articulés avec le même style que les véhicules originaux. Ces véhicules peuvent être réaménagés pour transporter la plupart des cargos de FIRS et des NewGRFs similaires.
 
 STR_BUS_NAME:Bus articulé Foster MkIII
 STR_MINERAL_NAME:Camion de minéraux à remorque DW
