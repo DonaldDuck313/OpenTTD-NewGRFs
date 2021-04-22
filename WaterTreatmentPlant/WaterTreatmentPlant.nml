@@ -96,6 +96,39 @@ item(FEAT_INDUSTRIES, water_supply){    //No need to define the graphics, the ov
 
 
 //Water tower
+spriteset(spriteset_water_tower, "gfx/watertower.png"){
+    //left x, upper y, width, height, offset x, offset y
+    [0,       0,       43,    70,     -20,      -42]
+    [48,      0,       43,    70,     -20,      -42]
+    [48,      0,       43,    70,     -20,      -42]    //Duplicate this so that we can use the variable construction_state directly
+    [96,      0,       43,    70,     -20,      -42]
+}
+
+spritelayout water_tower_sprite{
+    ground{
+        sprite: 3924;
+    }
+    building{
+        sprite: spriteset_water_tower(construction_state);
+        recolour_mode: RECOLOUR_REMAP;
+        palette: PALETTE_USE_DEFAULT;
+    }
+}
+
+item(FEAT_INDUSTRYTILES, water_tower_tile){
+    property{
+        substitute: 02;
+        special_flags: bitmask(INDTILE_FLAG_ACCEPT_ALL);
+    }
+    graphics{
+        default: water_tower_sprite;
+    }
+}
+
+tilelayout water_tower_layout{
+    0, 0: water_tower_tile;
+}
+
 item(FEAT_INDUSTRIES, water_tower){
     property{
         substitute: INDUSTRYTYPE_WATER_TOWER;
@@ -107,6 +140,9 @@ item(FEAT_INDUSTRIES, water_tower){
         name: TTD_STR_INDUSTRY_NAME_WATER_TOWER;
         prob_map_gen: 255;
         prob_in_game: 255;
+        layouts: [
+            water_tower_layout    //We need to redefine the graphics for it to be compatible with FIRS in order to access the INDTILE_FLAG_ACCEPT_ALL for the tiles, otherwise FIRS will make water towers accept fish instead of water
+        ];
     }
     graphics{
         location_check: switch_in_desert;
