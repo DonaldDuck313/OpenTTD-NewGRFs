@@ -2,7 +2,7 @@ grf{
     grfid: "GL\03\01";
     name: string(STR_GRF_NAME);
     desc: string(STR_GRF_DESCRIPTION);
-    version: 0;
+    version: 1;
     min_compatible_version: 0;
 }
 
@@ -117,6 +117,7 @@ item(FEAT_INDUSTRIES, bank){
         ];
         name: TTD_STR_INDUSTRY_NAME_BANK;
         prob_map_gen: 20;
+        prob_in_game: 50;
         layouts: [
             bank_layout
         ];
