@@ -2,7 +2,7 @@ grf{
     grfid: "GL\01\01";
     name: string(STR_GRF_NAME);
     desc: string(STR_GRF_DESCRIPTION);
-    version: 3;
+    version: 4;
     min_compatible_version: 0;
 }
 
@@ -37,6 +37,10 @@ switch(FEAT_TRAINS, SELF, switch_engine_class, current_railtype){
     ELRL: VISUAL_EFFECT_ELECTRIC;
 }
 
+cargotable{
+    PASS
+}
+
 item(FEAT_TRAINS){
     property{
         name: string(STR_VEHICLE_NAME);
@@ -55,6 +59,10 @@ item(FEAT_TRAINS){
         engine_class: ENGINE_CLASS_DIESEL;
         dual_headed: 1;
         sprite_id: SPRITE_ID_NEW_TRAIN;
+        cargo_capacity: 20;
+        default_cargo_type: PASS;
+        refittable_cargo_classes: ALL_CARGO_CLASSES;
+        non_refittable_cargo_classes: bitmask(CC_LIQUID);
     }
     graphics{
         default: spriteset_train;
