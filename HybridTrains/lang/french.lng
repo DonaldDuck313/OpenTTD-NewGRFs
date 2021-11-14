@@ -1,0 +1,7 @@
+##grflangid 0x03
+
+STR_GRF_NAME:Trains hybrides
+STR_GRF_DESCRIPTION:Ce NewGRF contient deux locomotives hybrides électrique/diesel et une locomotive hybride électrique/batterie, utilisés sur de nombreuses lignes TER et sur la ligne P du Transilien. Ils peuvent rouler en mode diesel/batterie sur les voies non-électrifiées, mais sont plus puissants et ont un coût d'entretien moins cher quand ils roulent en mode électrique sur les voies électrifiées.
+STR_B82500_NAME:B 82500 'Bibi' (Hybride)
+STR_B83500_NAME:B 83500 'Régiolis' (Hybride)
+STR_BATTERY_NAME:B 84500 'Régiolis' à batterie (Hybride)
