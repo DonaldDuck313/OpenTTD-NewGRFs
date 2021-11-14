@@ -1,0 +1,7 @@
+##grflangid 0x2e
+
+STR_GRF_NAME:Hybridtåg
+STR_GRF_DESCRIPTION:Den här NewGRF:en innehåller två elektrisk/diesel hybrid-lok och ett elektrisk/batteri hybrid-lok. De kan köra på diesel på icke-elektifierade spår, men har högre kraft och lägre körkostnad om det kör på elektricitet på elektrifierade spår.
+STR_B82500_NAME:B 82500 'Bibi' (Hybrid)
+STR_B83500_NAME:B 83500 'Regiolis' (Hybrid)
+STR_BATTERY_NAME:Batteri-driven B 84500 'Regiolis' (Hybrid)
