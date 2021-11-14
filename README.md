@@ -17,7 +17,7 @@ To use the game scripts:
 7. Start a new game
 
 List of my NewGRFs:
-* [B82500](https://github.com/DonaldDuck313/OpenTTD-NewGRFs/tree/main/B82500), a hybrid locomotive that can run on both electricity and diesel.
+* [Hybrid Trains](https://github.com/DonaldDuck313/OpenTTD-NewGRFs/tree/main/HybridTrains), a set of three hybrid locomotives that can run on both electricity and diesel.
 
     <img src="https://i.stack.imgur.com/BCWo5.png" height="150">
 
