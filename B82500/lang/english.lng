@@ -1,5 +1,0 @@
-##grflangid 0x00
-
-STR_GRF_NAME:B 82500
-STR_GRF_DESCRIPTION:The B 82500 is a hybrid electric/diesel locomotive designed in 2004, which is mainly used in France for regional passenger service. It can run in diesel mode on non-electrified tracks, but it's more powerful and has a cheaper running cost when run in electric mode on electrified tracks.
-STR_VEHICLE_NAME:B 82500 'BiBi' (Hybrid)

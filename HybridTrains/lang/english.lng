@@ -1,0 +1,7 @@
+##grflangid 0x00
+
+STR_GRF_NAME:Hybrid Trains
+STR_GRF_DESCRIPTION:This NewGRF contains two hybrid electric/diesel locomotives and one hybrid electric/battery locomotive. They can run in diesel/battery mode on non-electrified tracks, but are more powerful and have a cheaper running cost when run in electric mode on electrified tracks.
+STR_B82500_NAME:B 82500 'Bibi' (Hybrid)
+STR_B83500_NAME:B 83500 'Regiolis' (Hybrid)
+STR_BATTERY_NAME:Battery-driven B 84500 'Regiolis' (Hybrid)
