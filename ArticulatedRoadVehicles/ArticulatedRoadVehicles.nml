@@ -2,7 +2,7 @@ grf{
     grfid: "GL\04\01";
     name: string(STR_GRF_NAME);
     desc: string(STR_GRF_DESCRIPTION);
-    version: 0;
+    version: 1;
     min_compatible_version: 0;
 }
 
@@ -228,7 +228,7 @@ switch(FEAT_ROADVEHS, SELF, switch_mineral_back_sprites, cargo_type_in_veh){
     CLAY: return spritegroup_mineral_back_copper;
     CMNT: return spritegroup_mineral_back_misc;
     GRVL: return spritegroup_mineral_back_misc;
-    SAND: return spritegroup_mineral_front_grain;
+    SAND: return spritegroup_mineral_back_grain;
     return spritegroup_mineral_back_misc;
 }
 
