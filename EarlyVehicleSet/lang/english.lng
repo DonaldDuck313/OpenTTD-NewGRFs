@@ -1,0 +1,27 @@
+##grflangid 0x0
+
+STR_GRF_NAME:Early Vehicle Set
+STR_GRF_DESCRIPTION:This NewGRF contains road vehicles and trains that appear earlier than the original vehicles, so that you can start games before 1900. Fir ships, there are other NewGRFs with sailing ships.
+
+STR_MPS_STAGECOACH:MPS Stagecoach
+STR_PERRY_OMNIBUS:Perry Horsebus
+STR_BALOGH_BUS:Balogh Bus
+
+STR_MPS_WAGON:MPS Goods Wagon
+STR_WITCOMBE_MINERAL:Witcombe Mineral Wagon
+STR_THOMAS_TANKER:Thomas Tanker Wagon
+
+STR_THOMAS_ARMORED:Thomas Armored Truck
+STR_MPS_BOLSTER:MPS Bolster Truck
+STR_BALOGH_FOOD:Balogh Food Van
+STR_WITCOMBE_FRUIT:Witcombe Fruit Truck
+STR_THOMAS_GOODS:Thomas Goods Truck
+STR_PERRY_LIVESTOCK:Perry Livestock Van
+STR_BALOGH_MAIL:Balogh Mail Truck
+STR_MPS_MINERAL:MPS Mineral Truck
+STR_MPS_TANKER:MPS Tanker Truck
+STR_PERRY_WOOD:Perry Wood Truck
+
+STR_JOHN_BULL:John Bull (Steam)
+STR_LADY_OF_THE_LAKE:Lady of the Lake (Steam)
+STR_WOLVERHAMPTON_2021:Wolverhampton 2021 (Steam)
