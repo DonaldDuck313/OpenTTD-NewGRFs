@@ -2,7 +2,7 @@ grf{
     grfid: "GL\05\01";
     name: string(STR_GRF_NAME);
     desc: string(STR_GRF_DESCRIPTION);
-    version: 0;
+    version: 1;
     min_compatible_version: 0;
 }
 
@@ -37,7 +37,7 @@ item(FEAT_ROADVEHS, mps_stagecoach){
     property{
         name: string(STR_MPS_STAGECOACH);
         introduction_date: date(1700, 1, 1);
-        model_life: 180;
+        model_life: 160;
         vehicle_life: 20;
         loading_speed: 5;
         cost_factor: 10;
@@ -128,7 +128,7 @@ item(FEAT_ROADVEHS, mps_wagon){
     property{
         name: string(STR_MPS_WAGON);
         introduction_date: date(1700, 1, 1);
-        model_life: 240;
+        model_life: 220;
         vehicle_life: 20;
         loading_speed: 5;
         cost_factor: 10;
@@ -227,7 +227,7 @@ item(FEAT_ROADVEHS, witcombe_mineral){
     property{
         name: string(STR_WITCOMBE_MINERAL);
         introduction_date: date(1700, 1, 1);
-        model_life: 240;
+        model_life: 220;
         vehicle_life: 20;
         loading_speed: 5;
         cost_factor: 10;
@@ -268,8 +268,8 @@ switch(FEAT_ROADVEHS, SELF, switch_thomas_tanker_sprites, cargo_type_in_veh){
 item(FEAT_ROADVEHS, thomas_tanker){
     property{
         name: string(STR_THOMAS_TANKER);
-        introduction_date: date(1680, 1, 1);
-        model_life: 240;
+        introduction_date: date(1700, 1, 1);
+        model_life: 220;
         vehicle_life: 20;
         loading_speed: 5;
         cost_factor: 10;
