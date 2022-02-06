@@ -1,0 +1,27 @@
+##grflangid 0x2e
+
+STR_GRF_NAME:Early Vehicle Set
+STR_GRF_DESCRIPTION:Den här NewGRFen innehåller vägfordon och tåg som är tillgängliga tidigare än originalfordonen, så att du kan starta ett spel innan 1900. För skepp finns det andra NewGRF:er med segelskepp.
+
+STR_MPS_STAGECOACH:MPS Diligens
+STR_PERRY_OMNIBUS:Perry Hästomnibus
+STR_BALOGH_BUS:Balogh Bus
+
+STR_MPS_WAGON:MPS Godsvagn
+STR_WITCOMBE_MINERAL:Witcombe Mineralvagn
+STR_THOMAS_TANKER:Thomas Tankervagn
+
+STR_THOMAS_ARMORED:Thomas Bepansrad lastbil
+STR_MPS_BOLSTER:MPS Bolster-lastbil
+STR_BALOGH_FOOD:Balogh Matbil
+STR_WITCOMBE_FRUIT:Witcombe Fruktlastare
+STR_THOMAS_GOODS:Thomas Godslastbil
+STR_PERRY_LIVESTOCK:Perry Boskapsbil
+STR_BALOGH_MAIL:Balogh Postbil
+STR_MPS_MINERAL:MPS Minerallastbil
+STR_MPS_TANKER:MPS Tankerlastbil
+STR_PERRY_WOOD:Perry Timmerlastare
+
+STR_JOHN_BULL:John Bull (Ånga)
+STR_LADY_OF_THE_LAKE:Lady of the Lake (Ånga)
+STR_WOLVERHAMPTON_2021:Wolverhampton 2021 (Ånga)
