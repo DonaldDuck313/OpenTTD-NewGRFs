@@ -1,7 +1,7 @@
 ##grflangid 0x0
 
 STR_GRF_NAME:Early Vehicle Set
-STR_GRF_DESCRIPTION:This NewGRF contains road vehicles and trains that appear earlier than the original vehicles, so that you can start games before 1900. Fir ships, there are other NewGRFs with sailing ships.
+STR_GRF_DESCRIPTION:This NewGRF contains road vehicles and trains that appear earlier than the original vehicles, so that you can start games before 1900. For ships, there are other NewGRFs with sailing ships.
 
 STR_MPS_STAGECOACH:MPS Stagecoach
 STR_PERRY_OMNIBUS:Perry Horsebus
