@@ -32,6 +32,10 @@ List of my NewGRFs:
 * [Articulated Road Vehicles Set](https://github.com/DonaldDuck313/OpenTTD-NewGRFs/tree/main/ArticulatedRoadVehicles), contains articulated counterparts to the latest original road vehicles.
 
     <img src="https://i.stack.imgur.com/yMBWg.png" height="175">
+    
+* [Early Vehicle Set](https://github.com/DonaldDuck313/OpenTTD-NewGRFs/tree/main/EarlyVehicleSet), contains road vehicles from 1700 to 1930 and locomotives from 1830 to 1930. For early ships, use the [Sailing Ships](https://www.tt-forums.net/viewtopic.php?t=49040) NewGRF by J Mitchell.
+
+    <img src="https://i.stack.imgur.com/HFCUQ.png" height="300">
 
 List of my game scripts:
 * [Local Authorities and Trees](https://github.com/DonaldDuck313/OpenTTD-NewGRFs/tree/main/LocalAuthoritiesAndTrees), does so that the local authorities don't get as mad at you for cutting down trees.
