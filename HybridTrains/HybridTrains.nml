@@ -2,7 +2,7 @@ grf{
     grfid: "GL\01\01";
     name: string(STR_GRF_NAME);
     desc: string(STR_GRF_DESCRIPTION);
-    version: 7;
+    version: 8;
     min_compatible_version: 0;
 
     param 0{
@@ -32,8 +32,8 @@ railtypetable{
 }
 
 switch(FEAT_TRAINS, SELF, switch_power, current_railtype){
-    RAIL: 3500;
-    ELRL: 7000;
+    RAIL: (param_adjust_power == 1) ? 3500 : 1775;
+    ELRL: (param_adjust_power == 1) ? 7000 : 2547;
 }
 
 switch(FEAT_TRAINS, SELF, switch_running_cost, current_railtype){
@@ -66,7 +66,7 @@ item(FEAT_TRAINS){
         tractive_effort_coefficient: 0.3;
         weight: 55 ton;
         track_type: RAIL;
-        power: 1775;
+        power: (param_adjust_power == 1) ? 3500 : 1775;
         cost_factor: 50;
         running_cost_base: RUNNING_COST_DIESEL;
         running_cost_factor: 200;
@@ -99,7 +99,7 @@ item(FEAT_TRAINS){
         tractive_effort_coefficient: 0.3;
         weight: 55 ton;
         track_type: RAIL;
-        power: 1775;
+        power: (param_adjust_power == 1) ? 3500 : 1775;
         cost_factor: 50;
         running_cost_base: RUNNING_COST_DIESEL;
         running_cost_factor: 200;
@@ -132,7 +132,7 @@ item(FEAT_TRAINS){
         tractive_effort_coefficient: 0.3;
         weight: 55 ton;
         track_type: RAIL;
-        power: 1775;
+        power: (param_adjust_power == 1) ? 3500 : 1775;
         cost_factor: 50;
         running_cost_base: RUNNING_COST_DIESEL;
         running_cost_factor: 100;
