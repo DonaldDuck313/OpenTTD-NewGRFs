@@ -5,3 +5,6 @@ STR_GRF_DESCRIPTION:Ce NewGRF contient deux locomotives hybrides électrique/die
 STR_B82500_NAME:B 82500 'Bibi' (Hybride)
 STR_B83500_NAME:B 83500 'Régiolis' (Hybride)
 STR_BATTERY_NAME:B 84500 'Régiolis' à batterie (Hybride)
+
+STR_PARAM_NAME_ADJUST_POWER:Ajuster les puissances pour correspondre à celles des locomotives originaux
+STR_PARAM_DESC_ADJUST_POWER:Si ce paramètre est activé, les puissances des locomotives hybrides correspondront environ à celles des locomotives diesel originaux d'OpenTTD sur des voies non-électrifées, et à celles des locomotives électriques originaux d'OpenTTD sur des voies électrifiées. Sinon, la puissance des locomotives hybrides sera la même qu'en réalité, ce qui est beaucoup moins.

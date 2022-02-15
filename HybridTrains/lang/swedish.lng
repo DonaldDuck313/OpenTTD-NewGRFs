@@ -5,3 +5,6 @@ STR_GRF_DESCRIPTION:Den här NewGRF:en innehåller två elektrisk/diesel hybrid-
 STR_B82500_NAME:B 82500 'Bibi' (Hybrid)
 STR_B83500_NAME:B 83500 'Regiolis' (Hybrid)
 STR_BATTERY_NAME:Batteri-driven B 84500 'Regiolis' (Hybrid)
+
+STR_PARAM_NAME_ADJUST_POWER:Justera krafterna för att motsvara de originala loken
+STR_PARAM_DESC_ADJUST_POWER:Om den här inställninen är aktiverad kommer hybridlokens krafter att vara ungefär lika med de originala lokens krafter, de originala dieselloken på icke-elektrifierade spår och de originala elektriska loken på elektrifierade spår. Annars kommer hybridloken att ha samma krafter som i verkligheten, vilket är mycket mindre.
