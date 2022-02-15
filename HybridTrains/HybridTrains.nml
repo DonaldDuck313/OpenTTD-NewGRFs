@@ -2,8 +2,17 @@ grf{
     grfid: "GL\01\01";
     name: string(STR_GRF_NAME);
     desc: string(STR_GRF_DESCRIPTION);
-    version: 6;
+    version: 7;
     min_compatible_version: 0;
+
+    param 0{
+        param_adjust_power{
+            name: string(STR_PARAM_NAME_ADJUST_POWER);
+            desc: string(STR_PARAM_DESC_ADJUST_POWER);
+            type: bool;
+            def_value: 1;
+        }
+    }
 }
 
 spriteset(spriteset_train, "gfx/sprites.png"){
@@ -23,8 +32,8 @@ railtypetable{
 }
 
 switch(FEAT_TRAINS, SELF, switch_power, current_railtype){
-    RAIL: 1775;
-    ELRL: 2547;
+    RAIL: 3500;
+    ELRL: 7000;
 }
 
 switch(FEAT_TRAINS, SELF, switch_running_cost, current_railtype){
