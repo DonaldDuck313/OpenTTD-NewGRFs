@@ -2,7 +2,7 @@ grf{
     grfid: "GL\01\01";
     name: string(STR_GRF_NAME);
     desc: string(STR_GRF_DESCRIPTION);
-    version: 8;
+    version: 9;
     min_compatible_version: 0;
 
     param 0{
@@ -18,13 +18,13 @@ grf{
 spriteset(spriteset_train, "gfx/sprites.png"){
     //left x, upper y, width, height, offset x, offset y
     [0,       0,       10,    28,     -4,       -14]
-    [20,      0,       26,    28,     -17,      -16]
+    [20,      0,       26,    28,     -13,      -20]
     [50,      0,       36,    28,     -20,      -23]
-    [90,      0,       26,    28,     -9,       -18]
+    [90,      0,       26,    28,     -10,      -21]
     [120,     0,       10,    28,     -4,       -16]
     [140,     0,       26,    28,     -16,      -19]
     [170,     0,       36,    28,     -16,      -23]
-    [210,     0,       26,    28,     -8,       -18]
+    [210,     0,       26,    28,     -9,       -20]
 }
 
 railtypetable{
