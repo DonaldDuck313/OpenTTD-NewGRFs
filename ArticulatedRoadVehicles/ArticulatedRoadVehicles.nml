@@ -2,8 +2,17 @@ grf{
     grfid: "GL\04\01";
     name: string(STR_GRF_NAME);
     desc: string(STR_GRF_DESCRIPTION);
-    version: 1;
+    version: 2;
     min_compatible_version: 0;
+
+    param 0{
+        param_adjust_running_cost{
+            name: string(STR_PARAM_NAME_ADJUST_RUNNING_COST);
+            desc: string(STR_PARAM_DESC_ADJUST_RUNNING_COST);
+            type: bool;
+            def_value: 1;
+        }
+    }
 }
 
 cargotable{
@@ -72,7 +81,7 @@ item(FEAT_ROADVEHS, bus){
         vehicle_life: 15;
         loading_speed: 5;
         cost_factor: 225;
-        running_cost_factor: 255;
+        running_cost_factor: 255 / (param_adjust_running_cost + 1);
         speed: 100 km/h;
         power: 300 hp;
         weight: 40 ton;
@@ -250,7 +259,7 @@ item(FEAT_ROADVEHS, mineral){
         vehicle_life: 15;
         loading_speed: 5;
         cost_factor: 210;
-        running_cost_factor: 255;
+        running_cost_factor: 255 / (param_adjust_running_cost + 1);
         speed: 90 km/h;
         power: 500 hp;
         weight: 25 ton;
@@ -298,7 +307,7 @@ item(FEAT_ROADVEHS, mail){
         vehicle_life: 15;
         loading_speed: 5;
         cost_factor: 220;
-        running_cost_factor: 255;
+        running_cost_factor: 255 / (param_adjust_running_cost + 1);
         speed: 90 km/h;
         power: 500 hp;
         weight: 25 ton;
@@ -364,7 +373,7 @@ item(FEAT_ROADVEHS, tanker){
         vehicle_life: 15;
         loading_speed: 5;
         cost_factor: 220;
-        running_cost_factor: 255;
+        running_cost_factor: 255 / (param_adjust_running_cost + 1);
         speed: 90 km/h;
         power: 500 hp;
         weight: 25 ton;
@@ -410,7 +419,7 @@ item(FEAT_ROADVEHS, livestock){
         vehicle_life: 15;
         loading_speed: 5;
         cost_factor: 215;
-        running_cost_factor: 255;
+        running_cost_factor: 255 / (param_adjust_running_cost + 1);
         speed: 90 km/h;
         power: 500 hp;
         weight: 25 ton;
@@ -454,7 +463,7 @@ item(FEAT_ROADVEHS, goods){
         vehicle_life: 15;
         loading_speed: 5;
         cost_factor: 220;
-        running_cost_factor: 255;
+        running_cost_factor: 255 / (param_adjust_running_cost + 1);
         speed: 90 km/h;
         power: 500 hp;
         weight: 25 ton;
@@ -490,7 +499,7 @@ item(FEAT_ROADVEHS, grain){
         vehicle_life: 15;
         loading_speed: 5;
         cost_factor: 210;
-        running_cost_factor: 255;
+        running_cost_factor: 255 / (param_adjust_running_cost + 1);
         speed: 90 km/h;
         power: 500 hp;
         weight: 25 ton;
@@ -554,7 +563,7 @@ item(FEAT_ROADVEHS, wood){
         vehicle_life: 15;
         loading_speed: 5;
         cost_factor: 222;
-        running_cost_factor: 255;
+        running_cost_factor: 255 / (param_adjust_running_cost + 1);
         speed: 90 km/h;
         power: 500 hp;
         weight: 25 ton;
@@ -587,7 +596,7 @@ item(FEAT_ROADVEHS, ore){
         vehicle_life: 15;
         loading_speed: 5;
         cost_factor: 210;
-        running_cost_factor: 255;
+        running_cost_factor: 255 / (param_adjust_running_cost + 1);
         speed: 90 km/h;
         power: 500 hp;
         weight: 25 ton;
@@ -679,7 +688,7 @@ item(FEAT_ROADVEHS, bolster){
         vehicle_life: 15;
         loading_speed: 5;
         cost_factor: 222;
-        running_cost_factor: 255;
+        running_cost_factor: 255 / (param_adjust_running_cost + 1);
         speed: 90 km/h;
         power: 500 hp;
         weight: 25 ton;
@@ -725,7 +734,7 @@ item(FEAT_ROADVEHS, armored){
         vehicle_life: 15;
         loading_speed: 5;
         cost_factor: 230;
-        running_cost_factor: 255;
+        running_cost_factor: 255 / (param_adjust_running_cost + 1);
         speed: 90 km/h;
         power: 500 hp;
         weight: 25 ton;
@@ -771,7 +780,7 @@ item(FEAT_ROADVEHS, food){
         vehicle_life: 15;
         loading_speed: 5;
         cost_factor: 222;
-        running_cost_factor: 255;
+        running_cost_factor: 255 / (param_adjust_running_cost + 1);
         speed: 90 km/h;
         power: 500 hp;
         weight: 25 ton;
@@ -806,7 +815,7 @@ item(FEAT_ROADVEHS, paper){
         vehicle_life: 15;
         loading_speed: 5;
         cost_factor: 222;
-        running_cost_factor: 255;
+        running_cost_factor: 255 / (param_adjust_running_cost + 1);
         speed: 90 km/h;
         power: 500 hp;
         weight: 25 ton;
@@ -837,7 +846,7 @@ item(FEAT_ROADVEHS, water){
         vehicle_life: 15;
         loading_speed: 5;
         cost_factor: 220;
-        running_cost_factor: 255;
+        running_cost_factor: 255 / (param_adjust_running_cost + 1);
         speed: 90 km/h;
         power: 500 hp;
         weight: 25 ton;
@@ -899,7 +908,7 @@ item(FEAT_ROADVEHS, fruit){
         vehicle_life: 15;
         loading_speed: 5;
         cost_factor: 225;
-        running_cost_factor: 255;
+        running_cost_factor: 255 / (param_adjust_running_cost + 1);
         speed: 90 km/h;
         power: 500 hp;
         weight: 25 ton;
@@ -914,5 +923,286 @@ item(FEAT_ROADVEHS, fruit){
     graphics{
         default: switch_fruit_sprites;
         articulated_part: switch_articulated_fruit;
+    }
+}
+
+
+//Reduce running cost for original road vehicles if the parameter is activated
+if(param_adjust_running_cost == 1){
+    item(FEAT_ROADVEHS, original_bus_1, 0){
+        property{
+            running_cost_factor: 45;
+        }
+    }
+    item(FEAT_ROADVEHS, original_bus_2, 1){
+        property{
+            running_cost_factor: 65;
+        }
+    }
+    item(FEAT_ROADVEHS, original_bus_3, 2){
+        property{
+            running_cost_factor: 90;
+        }
+    }
+    item(FEAT_ROADVEHS, original_bus_4, 3){
+        property{
+            running_cost_factor: 120;
+        }
+    }
+
+    item(FEAT_ROADVEHS, original_coal_1, 7){
+        property{
+            running_cost_factor: 45;
+        }
+    }
+    item(FEAT_ROADVEHS, original_coal_2, 8){
+        property{
+            running_cost_factor: 85;
+        }
+    }
+    item(FEAT_ROADVEHS, original_coal_3, 9){
+        property{
+            running_cost_factor: 120;
+        }
+    }
+
+    item(FEAT_ROADVEHS, original_mail_1, 10){
+        property{
+            running_cost_factor: 45;
+        }
+    }
+    item(FEAT_ROADVEHS, original_mail_2, 11){
+        property{
+            running_cost_factor: 85;
+        }
+    }
+    item(FEAT_ROADVEHS, original_mail_3, 12){
+        property{
+            running_cost_factor: 120;
+        }
+    }
+
+    item(FEAT_ROADVEHS, original_oil_1, 16){
+        property{
+            running_cost_factor: 45;
+        }
+    }
+    item(FEAT_ROADVEHS, original_oil_2, 17){
+        property{
+            running_cost_factor: 85;
+        }
+    }
+    item(FEAT_ROADVEHS, original_oil_3, 18){
+        property{
+            running_cost_factor: 120;
+        }
+    }
+
+    item(FEAT_ROADVEHS, original_livestock_1, 19){
+        property{
+            running_cost_factor: 45;
+        }
+    }
+    item(FEAT_ROADVEHS, original_livestock_2, 20){
+        property{
+            running_cost_factor: 85;
+        }
+    }
+    item(FEAT_ROADVEHS, original_livestock_3, 21){
+        property{
+            running_cost_factor: 120;
+        }
+    }
+
+    item(FEAT_ROADVEHS, original_goods_1, 22){
+        property{
+            running_cost_factor: 45;
+        }
+    }
+    item(FEAT_ROADVEHS, original_goods_2, 23){
+        property{
+            running_cost_factor: 85;
+        }
+    }
+    item(FEAT_ROADVEHS, original_goods_3, 24){
+        property{
+            running_cost_factor: 120;
+        }
+    }
+
+    item(FEAT_ROADVEHS, original_grain_1, 25){
+        property{
+            running_cost_factor: 45;
+        }
+    }
+    item(FEAT_ROADVEHS, original_grain_2, 26){
+        property{
+            running_cost_factor: 85;
+        }
+    }
+    item(FEAT_ROADVEHS, original_grain_3, 27){
+        property{
+            running_cost_factor: 120;
+        }
+    }
+
+    item(FEAT_ROADVEHS, original_wood_1, 28){
+        property{
+            running_cost_factor: 45;
+        }
+    }
+    item(FEAT_ROADVEHS, original_wood_2, 29){
+        property{
+            running_cost_factor: 85;
+        }
+    }
+    item(FEAT_ROADVEHS, original_wood_3, 30){
+        property{
+            running_cost_factor: 120;
+        }
+    }
+
+    item(FEAT_ROADVEHS, original_iron_ore_1, 31){
+        property{
+            running_cost_factor: 45;
+        }
+    }
+    item(FEAT_ROADVEHS, original_iron_ore_2, 32){
+        property{
+            running_cost_factor: 85;
+        }
+    }
+    item(FEAT_ROADVEHS, original_iron_ore_3, 33){
+        property{
+            running_cost_factor: 120;
+        }
+    }
+
+    item(FEAT_ROADVEHS, original_steel_1, 34){
+        property{
+            running_cost_factor: 45;
+        }
+    }
+    item(FEAT_ROADVEHS, original_steel_2, 35){
+        property{
+            running_cost_factor: 85;
+        }
+    }
+    item(FEAT_ROADVEHS, original_steel_3, 36){
+        property{
+            running_cost_factor: 120;
+        }
+    }
+
+    item(FEAT_ROADVEHS, original_armored_1, 37){
+        property{
+            running_cost_factor: 45;
+        }
+    }
+    item(FEAT_ROADVEHS, original_armored_2, 38){
+        property{
+            running_cost_factor: 85;
+        }
+    }
+    item(FEAT_ROADVEHS, original_armored_3, 39){
+        property{
+            running_cost_factor: 120;
+        }
+    }
+
+    item(FEAT_ROADVEHS, original_food_1, 40){
+        property{
+            running_cost_factor: 45;
+        }
+    }
+    item(FEAT_ROADVEHS, original_food_2, 41){
+        property{
+            running_cost_factor: 85;
+        }
+    }
+    item(FEAT_ROADVEHS, original_food_3, 42){
+        property{
+            running_cost_factor: 120;
+        }
+    }
+
+    item(FEAT_ROADVEHS, original_paper_1, 43){
+        property{
+            running_cost_factor: 45;
+        }
+    }
+    item(FEAT_ROADVEHS, original_paper_2, 44){
+        property{
+            running_cost_factor: 85;
+        }
+    }
+    item(FEAT_ROADVEHS, original_paper_3, 45){
+        property{
+            running_cost_factor: 120;
+        }
+    }
+
+    item(FEAT_ROADVEHS, original_copper_ore_1, 46){
+        property{
+            running_cost_factor: 45;
+        }
+    }
+    item(FEAT_ROADVEHS, original_copper_ore_2, 47){
+        property{
+            running_cost_factor: 85;
+        }
+    }
+    item(FEAT_ROADVEHS, original_copper_ore_3, 48){
+        property{
+            running_cost_factor: 120;
+        }
+    }
+
+    item(FEAT_ROADVEHS, original_water_1, 49){
+        property{
+            running_cost_factor: 45;
+        }
+    }
+    item(FEAT_ROADVEHS, original_water_2, 50){
+        property{
+            running_cost_factor: 85;
+        }
+    }
+    item(FEAT_ROADVEHS, original_water_3, 51){
+        property{
+            running_cost_factor: 120;
+        }
+    }
+
+    item(FEAT_ROADVEHS, original_fruit_1, 52){
+        property{
+            running_cost_factor: 45;
+        }
+    }
+    item(FEAT_ROADVEHS, original_fruit_2, 53){
+        property{
+            running_cost_factor: 85;
+        }
+    }
+    item(FEAT_ROADVEHS, original_fruit_3, 54){
+        property{
+            running_cost_factor: 120;
+        }
+    }
+
+    item(FEAT_ROADVEHS, original_rubber_1, 55){
+        property{
+            running_cost_factor: 45;
+        }
+    }
+    item(FEAT_ROADVEHS, original_rubber_2, 56){
+        property{
+            running_cost_factor: 85;
+        }
+    }
+    item(FEAT_ROADVEHS, original_rubber_3, 57){
+        property{
+            running_cost_factor: 120;
+        }
     }
 }
