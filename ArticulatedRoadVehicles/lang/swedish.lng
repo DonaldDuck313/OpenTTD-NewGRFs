@@ -1,7 +1,10 @@
 ##grflangid 0x2e
 
 STR_GRF_NAME:Articulated Road Vehicle Set
-STR_GRF_DESCRIPTION:Den här NewGRFen innhåller artikulerade bussar och lastbilar med samma stil som de originalfordonen. De här fordonen kan anpassas för att transportera de flesta lasttyper från FIRS och liknande NewGRFer.
+STR_GRF_DESCRIPTION:Den här NewGRFen innhåller artikulerade bussar och lastbilar med samma stil som de originalfordonen. De här fordonen kan anpassas för att transportera de flesta lasttyper från FIRS och liknande NewGRFer. Det finns också ett alternativ för att minska de originella vägfordonens körkostnad för att göra dem mer användbara.
+
+STR_PARAM_NAME_ADJUST_RUNNING_COST:Reducera körkostnaden för att göra vägfordon mer användbara
+STR_PARAM_DESC_ADJUST_RUNNING_COST:Om den här inställningen är aktiverad halveras körkostnaden både för fordonen i den här NewGRF:en och för de originella vägfordonen. Syftet med den här parametern är att göra vägfordon mer användbara eftersom det annars kan vara svårt att få lastbilar att gå med vinst.
 
 STR_BUS_NAME:Foster MkIII Ledbuss
 STR_MINERAL_NAME:DW Mineral-släplastbil

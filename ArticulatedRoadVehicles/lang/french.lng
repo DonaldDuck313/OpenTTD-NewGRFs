@@ -1,7 +1,10 @@
 ##grflangid 0x3
 
 STR_GRF_NAME:Articulated Road Vehicle Set
-STR_GRF_DESCRIPTION:Ce NewGRF ajoute des bus et camions articulés avec le même style que les véhicules originaux. Ces véhicules peuvent être réaménagés pour transporter la plupart des cargos de FIRS et des NewGRFs similaires.
+STR_GRF_DESCRIPTION:Ce NewGRF ajoute des bus et camions articulés avec le même style que les véhicules originaux. Ces véhicules peuvent être réaménagés pour transporter la plupart des cargos de FIRS et des NewGRFs similaires. Il y a aussi une option pour réduire le coût d'entretien des véhicules routiers originaux afin de les rendre plus utiles.
+
+STR_PARAM_NAME_ADJUST_RUNNING_COST:Réduire les coûts d'entretien pour rendre les véhicules routiers plus utiles
+STR_PARAM_DESC_ADJUST_RUNNING_COST:Si ce paramètre est activé, le coût d'entretien sera divisé par deux pour les véhicules articulés de ce NewGRF et pour les véhicules routiers originaux. Le but de ce paramètre est de rendre les véhicules routiers plus utiles, parce que sinon il peut être difficile de rendre les camions profitables.
 
 STR_BUS_NAME:Bus articulé Foster MkIII
 STR_MINERAL_NAME:Camion de minéraux à remorque DW

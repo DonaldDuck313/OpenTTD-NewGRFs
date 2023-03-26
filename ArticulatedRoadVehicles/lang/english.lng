@@ -1,7 +1,10 @@
 ##grflangid 0x0
 
 STR_GRF_NAME:Articulated Road Vehicle Set
-STR_GRF_DESCRIPTION:This NewGRF adds articulated buses and trucks with the same style as the original vehicles. These vehicles can be refitted to transport most cargos from FIRS and other industry sets.
+STR_GRF_DESCRIPTION:This NewGRF adds articulated buses and trucks with the same style as the original vehicles. These vehicles can be refitted to transport most cargos from FIRS and other industry sets. There is also an option to reduce the running cost of the original road vehicles, making them more useful.
+
+STR_PARAM_NAME_ADJUST_RUNNING_COST:Reduce running costs to make road vehicles more useful
+STR_PARAM_DESC_ADJUST_RUNNING_COST:If this setting is activated, the running cost will be halved both for the articulated vehicles in this set and for the original road vehicles. The goal of this parameter is to make road vehicles more useful, since it can otherwise be difficult to have trucks that are profitable.
 
 STR_BUS_NAME:Foster MkIII Articulated Bus
 STR_MINERAL_NAME:DW Mineral Trailer Truck
