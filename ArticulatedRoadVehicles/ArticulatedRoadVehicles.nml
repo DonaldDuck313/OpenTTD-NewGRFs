@@ -467,7 +467,7 @@ item(FEAT_ROADVEHS, goods){
         speed: 90 km/h;
         power: 500 hp;
         weight: 25 ton;
-        cargo_capacity: 18;
+        cargo_capacity: 36;
         climates_available: ALL_CLIMATES;
         refittable_cargo_classes: bitmask(CC_PIECE_GOODS);
         non_refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_ARMOURED, CC_LIQUID, CC_REFRIGERATED);
@@ -1017,16 +1017,19 @@ if(param_adjust_running_cost == 1){
     item(FEAT_ROADVEHS, original_goods_1, 22){
         property{
             running_cost_factor: 45;
+            cargo_capacity: 28;
         }
     }
     item(FEAT_ROADVEHS, original_goods_2, 23){
         property{
             running_cost_factor: 85;
+            cargo_capacity: 32;
         }
     }
     item(FEAT_ROADVEHS, original_goods_3, 24){
         property{
             running_cost_factor: 120;
+            cargo_capacity: 36;
         }
     }
 
