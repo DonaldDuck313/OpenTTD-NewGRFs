@@ -1,0 +1,25 @@
+##grflangid 0x0
+
+STR_GRF_NAME:Improved Generic Tram Set
+STR_GRF_DESCRIPTION:This NewGRF is based on the Generic Tram Set (licensed under Creative Commons 3.0), but contains several improvements, such as:{}-It makes sure that at least one tram is available at all times after the first tram is introduced, as opposed to the Generic Tram Set where no trams at all are available after 2050.{}-It allows trams to be refitted to transport any cargo, making it compatible with industry replacement sets such as FIRS.
+
+STR_BALOGH_PASSENGER_NAME:Balogh Passenger Tram
+STR_SH_JUBILEE_NAME:SH Jubilee Passenger Tram
+STR_SH_ROYAL_NAME:SH Royal Passenger Tram
+STR_FOSTER_NAME:Foster 3 Car Passenger Tram
+STR_A2020_NAME:A2020 3 Car Passenger Tram
+
+STR_MPS_MAIL_NAME:MPS Mail Tram
+STR_SH08_MAIL_NAME:SH 08 Mail Tram
+STR_SH2000_MAIL_NAME:SH 2000 3 Car Mail Tram
+
+STR_BALOGH_GOODS_NAME:Balogh Goods Tram
+STR_MANLEY_MOREL_NAME:Manley-Morel Goods Tram
+STR_FLOSS_NAME:Floss 3 Car Goods Tram
+
+STR_BALOGH_ARMORED_NAME:Balogh Armored Tram
+STR_MANLEY_MOREL_ARMORED_NAME:Manley-Morel Armored Tram
+STR_FOSTER_ARMORED_NAME:Foster 3 Car Armored Tram
+
+STR_WITCOMBE_TANKER_NAME:Witcombe Tanker Tram
+STR_FLOSS_TANKER_NAME:Floss Tanker Tram
